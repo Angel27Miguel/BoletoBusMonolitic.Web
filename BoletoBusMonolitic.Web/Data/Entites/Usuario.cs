@@ -2,7 +2,7 @@
 
 namespace BoletoBusMonolitic.Web.Data.Entites
 {
-    public class Usuario 
+    public class Usuario : BaseEntity
     {
         // atributos de la entidad 
         
@@ -12,5 +12,10 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private string clave;
         private string TipoUsuario;
         private DateTime fechaCreacion;
+
+        public Usuario(int id) : base(id)
+        {
+
+        }
     }
 }
