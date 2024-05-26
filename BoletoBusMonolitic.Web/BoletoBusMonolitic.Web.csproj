@@ -7,10 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Date\**" />
+    <Content Remove="Date\**" />
+    <EmbeddedResource Remove="Date\**" />
+    <None Remove="Date\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="BL\Interface\" />
     <Folder Include="BL\Exeptions\" />
     <Folder Include="BL\Dtoa\" />
-    <Folder Include="Data\Exeptions\" />
   </ItemGroup>
 
 </Project>
