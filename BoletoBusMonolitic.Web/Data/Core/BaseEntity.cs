@@ -1,9 +1,12 @@
-﻿
 namespace BoletoBusMonolitic.Web.Data.Core
-
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
-        private int id; 
+        private int Id;
+
+        public  BaseEntity(int id)
+        {
+            this.Id = id;
+        }
     }
 }
