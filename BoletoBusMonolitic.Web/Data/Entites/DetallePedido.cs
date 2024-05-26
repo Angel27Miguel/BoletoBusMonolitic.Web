@@ -4,8 +4,14 @@ namespace BoletoBusMonolitic.Web.Data.Entites
 {
     public class DetallePedido : BaseEntity
     {
-        public DetallePedido(int id) : base(id)
+        private int IdPedido;
+        private int IdPlato;
+        private int Cantidad;
+        private double Subtotal;
+
+        public DetallePedido(int idDetallePedido) : base(idDetallePedido)
         {
+            
         }
     }
 }
