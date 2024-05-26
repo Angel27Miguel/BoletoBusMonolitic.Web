@@ -1,6 +1,8 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Entites
+﻿using BoletoBusMonolitic.Web.Data.Core;
+
+namespace BoletoBusMonolitic.Web.Data.Entites
 {
-    public class Menu
+    public class Menu : BaseEntity
     {
     }
 }
