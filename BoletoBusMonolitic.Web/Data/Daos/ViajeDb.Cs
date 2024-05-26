@@ -1,5 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Date.Entites;
-using BoletoBusMonolitic.Web.Date.Interfaces;
+﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 
 namespace BoletoBusMonolitic.Web.Date.Daos
 {

@@ -10,7 +10,7 @@
     <Folder Include="BL\Interface\" />
     <Folder Include="BL\Exeptions\" />
     <Folder Include="BL\Dtoa\" />
-    <Folder Include="Date\Exeptions\" />
+    <Folder Include="Data\Exeptions\" />
   </ItemGroup>
 
 </Project>
