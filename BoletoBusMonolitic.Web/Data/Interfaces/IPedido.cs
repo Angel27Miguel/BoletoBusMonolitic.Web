@@ -2,8 +2,8 @@
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
-    public interface IViaje
+    public interface IPedido
     {
-        List<Viaje> GetViajeList();
+        List<Pedido> GetPedidoList();
     }
 }

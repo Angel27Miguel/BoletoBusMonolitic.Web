@@ -1,11 +1,11 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 
-namespace BoletoBusMonolitic.Web.Date.Daos
+namespace BoletoBusMonolitic.Web.Data.Daos
 {
-    public class ViajeDb : IViaje
+    public class PedidoDb : IPedido
     {
-        public List<Viaje> GetViajeList()
+        public List<Pedido> GetPedidoList()
         {
             throw new NotImplementedException();
         }
