@@ -1,21 +1,26 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 
-namespace BoletoBusMonolitic.Web.Date.Daos
+namespace BoletoBusMonolitic.Web.Data.DbObject
 {
-    public class ViajeDb : IViajeDb
+    public class EmpleadoDb : IEmpleados
     {
-        public List<Viaje> GetViajeList()
+        void IEmpleados.AgregarEmpleado()
         {
             throw new NotImplementedException();
         }
 
-        void IViajeDb.BorrarViaje()
+        void IEmpleados.EliminarEmpleados()
         {
             throw new NotImplementedException();
         }
 
-        void IViajeDb.GuardarViaje()
+        List<Empleados> IEmpleados.GetEmpleadosList()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IEmpleados.MostrarEmpleados()
         {
             throw new NotImplementedException();
         }

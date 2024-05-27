@@ -1,6 +1,6 @@
 ﻿namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class ViajeModel
+    public class EmpleadosModel
     {
     }
 }

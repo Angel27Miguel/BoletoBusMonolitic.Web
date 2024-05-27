@@ -1,21 +1,16 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 
-namespace BoletoBusMonolitic.Web.Date.Daos
+namespace BoletoBusMonolitic.Web.Data.DbObject
 {
-    public class ViajeDb : IViajeDb
+    public class ReservaDetalleDb : IReservaDetalle
     {
-        public List<Viaje> GetViajeList()
+        public List<ReservaDetalle> GetReservaDetalleList()
         {
             throw new NotImplementedException();
         }
 
-        void IViajeDb.BorrarViaje()
-        {
-            throw new NotImplementedException();
-        }
-
-        void IViajeDb.GuardarViaje()
+        public void Mostrar()
         {
             throw new NotImplementedException();
         }
