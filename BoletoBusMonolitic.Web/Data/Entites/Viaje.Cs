@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Core;
+using System;
 
 namespace BoletoBusMonolitic.Web.Data.Entites;
 
@@ -9,3 +10,4 @@ public class Viaje : BaseEntity
     {
     }
 }
+//Angel Miguel de la Rosa
