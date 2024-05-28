@@ -8,6 +8,9 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
         public void Mostrar();
 
         public void Actualizar();
+        public void Agregar();
+        public void Eliminar();
+
 
     }
    

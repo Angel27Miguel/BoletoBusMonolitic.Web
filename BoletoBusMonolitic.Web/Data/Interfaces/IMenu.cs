@@ -6,6 +6,8 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<Menu> GetMenuList();
         public void Mostrar();
+        public void Agregar();
         public void Actualizar();
+        public void Eliminar();
     }
 }

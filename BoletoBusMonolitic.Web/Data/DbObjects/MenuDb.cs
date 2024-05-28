@@ -10,6 +10,16 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             throw new NotImplementedException();
         }
 
+        public void Agregar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Menu> GetMenuList()
         {
             throw new NotImplementedException();

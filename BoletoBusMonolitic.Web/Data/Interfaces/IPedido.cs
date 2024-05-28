@@ -7,5 +7,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
         List<Pedido> GetPedidoList();
         public void Mostrar();
         public void Actualizar();
+        public void Eliminar();
+        public void Agregar();   
     }
 }

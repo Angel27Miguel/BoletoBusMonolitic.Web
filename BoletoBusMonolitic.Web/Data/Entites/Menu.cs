@@ -10,8 +10,13 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private double Precio;
         private string Categoria;
 
-        public Menu(int id) : base(id)
+        public Menu(int id, int IdPlato, string Nombre, string Descripcion, double Precio, string Categoria) : base(id)
         { 
+            this.IdPlato = IdPlato;
+            this.Nombre = Nombre;
+            this.Descripcion = Descripcion;
+            this.Precio = Precio;
+            this.Categoria = Categoria; 
         }
     }
 }

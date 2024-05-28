@@ -9,8 +9,12 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private int Cantidad;
         private double Subtotal;
 
-        public DetallePedido(int idDetallePedido) : base(idDetallePedido)
+        public DetallePedido(int id, int IdPedido, int IdPlato, int Cantidad, double Subtotal) : base(id)
         {
+            this.IdPedido = IdPedido;
+            this.IdPlato = IdPlato;
+            this.Cantidad = Cantidad;
+            this.Subtotal = Subtotal;
             
         }
     }

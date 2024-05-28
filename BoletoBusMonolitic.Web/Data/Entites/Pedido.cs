@@ -8,8 +8,12 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private int IdMesa;
         private DateTime Fecha;
         private double Total;
-        public Pedido(int id) : base(id)
+        public Pedido(int id, int IdCliente, int IdMesa, DateTime Fecha, double Total) : base(id)
         {
+            this.IdCliente = IdCliente;
+            this.IdMesa = IdMesa;   
+            this.Fecha = Fecha;
+            this.Total = Total;
         }
     }
 }
