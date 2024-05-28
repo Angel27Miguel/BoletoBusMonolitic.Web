@@ -2,11 +2,11 @@
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
-    public interface IViajeDb
+    public interface IReservaDetalle
     {
-        List<Viaje> GetViajeList();
-        public void GuardarViaje();
-        public void BorrarViaje();
+        List<ReservaDetalle> GetReservaDetalleList();
+
+        public void Mostrar();
     }
 }
 //Angel Miguel de la Rosa
