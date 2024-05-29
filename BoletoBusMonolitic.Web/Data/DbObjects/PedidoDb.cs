@@ -9,11 +9,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
         {
             throw new NotImplementedException();
         }
-
-        public void Mostrar()
-        {
-            throw new NotImplementedException();
-        }
+        
         public void Actualizar()
         {
             throw new NotImplementedException();
