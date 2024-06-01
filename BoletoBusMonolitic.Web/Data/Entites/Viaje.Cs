@@ -6,6 +6,7 @@ namespace BoletoBusMonolitic.Web.Data.Entites;
 
 public class Viaje : BaseEntity
 {
+
     //Atributos de la entidad 
 
     private int IdBus;
@@ -37,6 +38,7 @@ public class Viaje : BaseEntity
         this.AsientosDisponibles = AsientosDisponibles;
         this.Completo = Completo;
         this.FechaCreacion = FechaCreacion;
+
     }
 }
 //Angel Miguel de la Rosa

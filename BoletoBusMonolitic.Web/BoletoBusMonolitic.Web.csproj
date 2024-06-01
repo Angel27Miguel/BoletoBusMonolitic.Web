@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="BL\Interface\" />
-    <Folder Include="BL\Exeptions\" />
     <Folder Include="BL\Dtoa\" />
   </ItemGroup>
 

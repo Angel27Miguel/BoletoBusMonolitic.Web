@@ -1,31 +1,26 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 
-namespace BoletoBusMonolitic.Web.Data.DbObject
+namespace BoletoBusMonolitic.Web.Data.Daos
 {
-    public class RutaDb : IRuta
+    public class PedidoDb : IPedido
     {
-        public void actualizarRuta()
+        public List<Pedido> GetPedidoList()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public void Actualizar()
         {
             throw new NotImplementedException();
         }
 
-        public void buscarRuta()
+        public void Eliminar()
         {
             throw new NotImplementedException();
         }
 
-        public void crearRuta()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminarRuta()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Ruta> GetRutaList()
+        public void Agregar()
         {
             throw new NotImplementedException();
         }
