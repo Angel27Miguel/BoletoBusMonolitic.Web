@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.Context;
+﻿using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Interfaces;
@@ -19,21 +20,28 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
-            throw new NotImplementedException();
+            var viaje = this.context.Viajes.Find(viajeEditar);
+            if (viaje == null)
+            {
+                exception.ErrorMessage();
+            }
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
         {
-            throw new NotImplementedException();
+            var viaje = this.context.Viajes.Find(viajeEliminar); 
+            if (viaje == null)
+            {
+                exception.ErrorMessage();
+            }
+
+         
         }
 
         public ViajeModel GetViaje(int IdViaje)
         {
             var viaje = this.context.Viajes.Find(IdViaje);
-            if (viaje == null)
-            {
-                exception.Error();
-            }
+           
             ViajeModel viajeModel = new ViajeModel()
             {
                 ViajeId = viaje.ViajeId,

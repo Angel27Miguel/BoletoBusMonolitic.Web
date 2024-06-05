@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
@@ -6,11 +7,13 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<Empleados> GetEmpleadosList();
 
-        public void AgregarEmpleado();
+        void GuardarEmpleado( EmpleadosGuardarModel empleadosGuardar);
 
-        public void EliminarEmpleados();
+        void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar);
 
-        public void MostrarEmpleados();
+        void EditarEmpleados(EmpleadosEditarModel empleadosEditar);
+
+        EmpleadosModel GetEmpleados(int IdEmpleado);
     }
 }
 //Angel Miguel de la Rosa

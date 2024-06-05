@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
@@ -6,7 +7,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<ReservaDetalle> GetReservaDetalleList();
 
-        public void Mostrar();
+        ReservaDetalleModel GetReservaDetalleModel(int IdReservaDetalle);
     }
 }
 //Angel Miguel de la Rosa
