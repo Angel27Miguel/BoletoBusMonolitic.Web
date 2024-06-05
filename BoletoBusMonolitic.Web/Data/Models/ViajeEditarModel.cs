@@ -1,10 +1,8 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
-
-namespace BoletoBusMonolitic.Web.Data.Models
+﻿namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class ViajeModel
+    public class ViajeEditarModel
     {
-        public int ViajeId { get; set; }
+        public int IdViaje { get; set; }
         public int IdBus { get; set; }
         public string? Bus { get; set; }
         public int IdRuta { get; set; }
@@ -18,9 +16,7 @@ namespace BoletoBusMonolitic.Web.Data.Models
         public double Precio { get; set; }
         public int TotalAsiento { get; set; }
         public int AsientosDisponibles { get; set; }
-        public DateTime FechaCreacion { get; set; }
-
-
+        public DateTime FechaEditado { get; set; }
+        
     }
 }
-//Angel Miguel de la Rosa

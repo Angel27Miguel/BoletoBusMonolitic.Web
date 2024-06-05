@@ -1,12 +1,19 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IViajeDb
     {
         List<Viaje> GetViajeList();
-        public void GuardarViaje();
-        public void BorrarViaje();
+
+        void GuardarViaje(ViajeGuardarModel viajeGuardar);
+        void EditarViaje(ViajeEditarModel viajeEditar);
+        void EliminarViaje(ViajeEliminarModel viajeEliminar);
+
+        ViajeModel GetViaje(int IdViaje);
+
+
     }
 }
 //Angel Miguel de la Rosa
