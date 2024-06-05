@@ -9,11 +9,13 @@ namespace BoletoBusMonolitic.Web.Date.Daos
     public class ViajeDb : IViajeDb
     {
         private readonly BoletoBusContext context;
+        private readonly ViajeException exception;
         private Viaje viaje;
 
-        public ViajeDb(BoletoBusContext context)
+        public ViajeDb(BoletoBusContext context, ViajeException exception)
         {
             this.context = context;
+            this.exception = exception;
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
@@ -28,7 +30,10 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         public ViajeModel GetViaje(int IdViaje)
         {
             var viaje = this.context.Viajes.Find(IdViaje);
-
+            if (viaje == null)
+            {
+                exception.Error();
+            }
             ViajeModel viajeModel = new ViajeModel()
             {
                 ViajeId = viaje.ViajeId,
@@ -59,10 +64,6 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
         public void GuardarViaje(ViajeGuardarModel viajeGuardar)
         {
-            if (viajeGuardar is null) {
-
-                throw new Exception("ViajeException");
-            }
             Viaje viaje= new Viaje() {
 
                 IdBus = viajeGuardar.IdBus,

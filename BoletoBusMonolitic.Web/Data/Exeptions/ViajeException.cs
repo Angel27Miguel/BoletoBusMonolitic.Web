@@ -6,5 +6,15 @@
         { 
         
         }
+
+        public void Error (string message)
+        {
+            message = "Viaje no encontrado";
+        }
+
+        internal void Error()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
