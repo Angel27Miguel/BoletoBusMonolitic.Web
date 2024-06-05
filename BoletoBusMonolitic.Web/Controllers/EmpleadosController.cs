@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Date.Daos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class EmpleadosController : Controller
     {
+        private readonly EmpleadoDb empleadoDb;
+
+        public EmpleadosController(EmpleadoDb empleadoDb)
+        {
+            this.empleadoDb = empleadoDb;
+        }
         // GET: EmpleadosController
         public ActionResult Index()
         {

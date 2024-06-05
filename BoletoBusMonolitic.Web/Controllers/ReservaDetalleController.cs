@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Date.Daos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ReservaDetalleController : Controller
     {
+        private readonly ReservaDetalleDb reservaDetalleDb;
+
+        public ReservaDetalleController(ReservaDetalleDb reservaDetalleDb)
+        {
+            this.reservaDetalleDb = reservaDetalleDb;
+        }
         // GET: ReservaDetalleController
         public ActionResult Index()
         {
