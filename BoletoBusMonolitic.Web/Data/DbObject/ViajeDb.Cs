@@ -25,23 +25,40 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             {
                 exception.ErrorMessage();
             }
+            Viaje viaje2 = new Viaje()
+            {
+
+                ViajeId = viajeEditar.IdViaje,
+                IdBus = viajeEditar.IdBus,
+                Bus = viajeEditar.Bus,
+                IdRuta = viajeEditar.IdRuta,
+                IdPasajero = viajeEditar.IdPasajero,
+                Pasajero = viajeEditar.Pasajero,
+                Ruta = viajeEditar.Ruta,
+                FechaSalida = viajeEditar.FechaSalida,
+                HoraSalida = viajeEditar.HoraSalida,
+                FechaLlegada = viajeEditar.FechaLlegada,
+                HoraLlegada = viajeEditar.HoraLlegada,
+                Precio = viajeEditar.Precio,
+
+            };
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
         {
-            var viaje = this.context.Viajes.Find(viajeEliminar); 
+            var viaje = this.context.Viajes.Find(viajeEliminar);
             if (viaje == null)
             {
                 exception.ErrorMessage();
             }
 
-         
+
         }
 
         public ViajeModel GetViaje(int IdViaje)
         {
             var viaje = this.context.Viajes.Find(IdViaje);
-           
+
             ViajeModel viajeModel = new ViajeModel()
             {
                 ViajeId = viaje.ViajeId,
@@ -72,7 +89,8 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
         public void GuardarViaje(ViajeGuardarModel viajeGuardar)
         {
-            Viaje viaje= new Viaje() {
+            Viaje viaje = new Viaje()
+            {
 
                 IdBus = viajeGuardar.IdBus,
                 Bus = viajeGuardar.Bus,
@@ -85,13 +103,13 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 FechaLlegada = viajeGuardar.FechaLlegada,
                 HoraLlegada = viajeGuardar.HoraLlegada,
                 Precio = viajeGuardar.Precio,
-              
+
             };
             this.context.Viajes.Add(viaje);
             this.context.SaveChanges();
         }
 
-        
+
     }
 }
 //Angel Miguel de la Rosa
