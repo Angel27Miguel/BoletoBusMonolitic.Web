@@ -1,13 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class MenuController : Controller
     {
+        private BoletoBusContext context;
+
+        public MenuController()
+        {
+            this.context = new BoletoBusContext();
+
+        }
         // GET: MenuController
         public ActionResult Index()
         {
+            var Menu = this.context.Menu.ToList();
             return View();
         }
 

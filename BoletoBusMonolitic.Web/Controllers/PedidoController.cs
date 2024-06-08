@@ -1,13 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class PedidoController : Controller
     {
+        private BoletoBusContext context;
+
+        public PedidoController()
+        {
+            this.context = new BoletoBusContext();
+
+        }
         // GET: PedidoController
         public ActionResult Index()
         {
+            var Pedido = this.context.Pedido.ToList();
             return View();
         }
 
