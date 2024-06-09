@@ -18,27 +18,70 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         }
         public void EditarEmpleados(EmpleadosEditarModel empleadosEditar)
         {
-            throw new NotImplementedException();
+            var EmpleadoEdita = this.context.Empleado.Find(empleadosEditar);
+            if (EmpleadoEdita == null)
+            {
+                
+            }
+
+           EmpleadoEdita.Nombre = empleadosEditar.Nombre;
+            EmpleadoEdita.Cargo = empleadosEditar.Cargo;
+
+            this.context.Empleado.Update(EmpleadoEdita);
+            this.context.SaveChanges();
         }
 
         public void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar)
         {
-            throw new NotImplementedException();
+            var empleadoMobelEliminar = this.context.Empleado.Find(empleadosEliminar.IdEmpleado);
+            if (empleadoMobelEliminar == null)
+            {
+                exception.Error();
+            }
+
+            empleadoMobelEliminar.IdEmpleado = empleadosEliminar.IdEmpleado;
+
+            this.context.Remove(empleadoMobelEliminar);
+            this.context.SaveChanges();
         }
 
-        public EmpleadosModel GetEmpleados(int IdEmpleado)
+        public EmpleadosModel GetEmpleado(int IdEmpleado)
         {
-            throw new NotImplementedException();
+            var empleados = this.context.Empleado.Find(IdEmpleado);
+
+            ArgumentNullException.ThrowIfNull(empleados,"Empleado no encontrado");
+
+            EmpleadosModel empleadosModel = new EmpleadosModel()
+            {
+                IdEmpleado = empleados.IdEmpleado,
+                Nombre = empleados.Nombre,
+                Cargo = empleados.Cargo
+            };
+            return empleadosModel;
         }
 
-        public List<Empleados> GetEmpleadosList()
+        public List<EmpleadosModel> GetEmpleadosList()
         {
-            throw new NotImplementedException();
+            return this.context.Empleado.Select(cd => new EmpleadosModel()
+            {
+              IdEmpleado = cd.IdEmpleado,
+              Nombre = cd.Nombre,
+              Cargo = cd.Cargo
+
+            }).ToList();
         }
 
         public void GuardarEmpleado(EmpleadosGuardarModel empleadosGuardar)
         {
-            throw new NotImplementedException();
+            Empleados empleados = new Empleados()
+            {
+
+                Nombre = empleadosGuardar.Nombre,
+                Cargo = empleadosGuardar.Cargo
+
+            };
+            this.context.Empleado.Add(empleados);
+            this.context.SaveChanges();
         }
     }
 }

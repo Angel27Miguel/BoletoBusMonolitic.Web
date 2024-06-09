@@ -6,8 +6,9 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     {
         //Atributos de la entidad 
 
-        private string? Nombre { get; set; }
-        private string? Cargo { get; set; }
+       public int IdEmpleado { get; set; }
+        public string? Nombre { get; set; }
+        public string? Cargo { get; set; }
 
 
     }

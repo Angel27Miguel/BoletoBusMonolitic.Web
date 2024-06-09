@@ -5,7 +5,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IEmpleados
     {
-        List<Empleados> GetEmpleadosList();
+        List<EmpleadosModel> GetEmpleadosList();
 
         void GuardarEmpleado( EmpleadosGuardarModel empleadosGuardar);
 
@@ -13,7 +13,8 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 
         void EditarEmpleados(EmpleadosEditarModel empleadosEditar);
 
-        EmpleadosModel GetEmpleados(int IdEmpleado);
+ 
+        EmpleadosModel GetEmpleado(int IdEmpleado);
     }
 }
 //Angel Miguel de la Rosa

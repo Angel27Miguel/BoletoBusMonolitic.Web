@@ -5,16 +5,20 @@ using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.EntityFrameworkCore;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-//// Add services to the container.
+// Add services to the container.
 //builder.Services.AddDbContext<BoletoBusContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
+//options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
-//// Agregar las dependencias del objeto de datos
+
+////// Agregar las dependencias del objeto de datos //
 //builder.Services.AddScoped<IViajeDb, ViajeDb>();
 
-//// Agregar las dependencias del BL
+
+////// Agregar las dependencias del BL //
 //builder.Services.AddTransient<IviajeServices, ViajeService>();
 
 

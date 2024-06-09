@@ -38,7 +38,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
             this.context.Viaje.Update(viajeEdita);
             this.context.SaveChanges();
-       
+
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
@@ -49,8 +49,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 exception.ErrorMessage();
             }
 
-            viajeEliminarModel.Deleted = viajeEliminar.Deleted;
-            viajeEliminarModel.DeletedDate = viajeEliminar.DeleteDate;
+            
             viajeEliminarModel.IdViaje = viajeEliminar.IdViaje;
 
             this.context.Viaje.Remove(viajeEliminarModel);
@@ -99,7 +98,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 AsientosDisponibles = cd.AsientosDisponibles,
                 FechaCreacion = cd.FechaCreacion
 
-    }).ToList();
+              }).ToList();
         }
 
         public void GuardarViaje(ViajeGuardarModel viajeGuardar)
