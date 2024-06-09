@@ -1,33 +1,93 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Daos
 {
-    public class MenuDb : IMenu
+    public class MenuDb : IMenuDb
     {
-        public void Actualizar()
+        private readonly BoletoBusContext context;
+
+        public MenuDb(BoletoBusContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public void Agregar()
+        public void Actualizar(MenuUpdateModel menuUpdate)
         {
-            throw new NotImplementedException();
+            var menu = this.context.Menu.Find(menuUpdate.IdPlato);
+            if (menu == null)
+            {
+                throw new ArgumentException("El menú no se encuentra registrado.");
+            }
+
+            menu.Categoria = menuUpdate.Categoria;
+            menu.Descripcion = menuUpdate.Descripcion;
+            menu.Nombre = menuUpdate.Nombre;
+            menu.Precio = menuUpdate.Precio;
+
+            this.context.Menu.Update(menu);
+            this.context.SaveChanges();
         }
 
-        public void Eliminar()
+        public void Agregar(MenuAddModel menuAdd)
         {
-            throw new NotImplementedException();
+            Menu menu = new Menu()
+            {
+                Categoria = menuAdd.Categoria,
+                Descripcion = menuAdd.Descripcion,
+                Nombre = menuAdd.Nombre,
+                Precio = menuAdd.Precio
+            };
+
+            this.context.Menu.Add(menu);
+            this.context.SaveChanges();
         }
 
-        public List<Menu> GetMenuList()
+        public void Eliminar(MenuRemoveModel menuRemove)
         {
-            throw new NotImplementedException();
+            var menu = this.context.Menu.Find(menuRemove.IdPlato);
+            if (menu == null)
+            {
+                throw new ArgumentException("El menú no se encuentra registrado.");
+            }
+
+            this.context.Menu.Remove(menu);
+            this.context.SaveChanges();
         }
 
-        public void Mostrar()
+        public List<MenuModel> GetMenuList()
         {
-            throw new NotImplementedException();
+            return this.context.Menu.Select(cm => new MenuModel()
+            {
+                IdPlato = cm.IdPlato,
+                Categoria = cm.Categoria,
+                Descripcion = cm.Descripcion,   
+                Nombre = cm.Nombre,
+                Precio = cm.Precio,
+            }).ToList();
         }
+
+        public MenuModel GetMenuModel(int idPlato)
+        {
+
+            var menu = this.context.Menu.Find(idPlato);
+
+            ArgumentNullException.ThrowIfNull(menu, "Este menu no se encuentra registrado.");
+
+
+            MenuModel menuModel = new MenuModel()
+            {
+                IdPlato = idPlato,
+                Categoria = menu.Categoria,
+                Descripcion = menu.Descripcion,
+                Nombre = menu.Nombre,
+                Precio = menu.Precio,
+            };
+
+            return menuModel;
+        }
+
     }
 }

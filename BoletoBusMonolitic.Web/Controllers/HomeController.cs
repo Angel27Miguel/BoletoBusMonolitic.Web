@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace SchoolMonoliticWeb.Controllers
+namespace BoletoBusMonolitic.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -30,3 +30,9 @@ namespace SchoolMonoliticWeb.Controllers
         }
     }
 }
+
+
+
+
+
+

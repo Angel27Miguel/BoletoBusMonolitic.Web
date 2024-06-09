@@ -1,8 +1,6 @@
-﻿using BoletoBusMonolitic.Web.Data.Core;
-
-namespace BoletoBusMonolitic.Web.Data.Entites
+﻿namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class Pedido : BaseEntity
+    public class PedidoUpdateModel
     {
         public int IdPedido { get; set; }
         public int IdCliente { get; set; }
