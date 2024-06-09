@@ -41,7 +41,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
                 throw new ArgumentException("El detalle de pedido no se encuentra registrado.");
             }
         }
-        public List<DetallePedidoModel> GetDetallePedidoList()
+        public List<DetallePedidoModel> GetDetallePedidos()
         {
             return this.context.DetallePedido.Select(cdp => new DetallePedidoModel()
             {

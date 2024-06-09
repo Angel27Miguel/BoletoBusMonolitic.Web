@@ -11,14 +11,15 @@ namespace BoletoBusMonolitic.BL.Services
     {
         private readonly IDetallePedidoDb detallePedidoDb;
 
-        public DetallePedidoService(IDetallePedidoDb departmentDb)
+        public DetallePedidoService(IDetallePedidoDb detallePedidoDb)
         {
-            this.detallePedidoDb = departmentDb;
+            this.detallePedidoDb = detallePedidoDb;
         }
         public List<DetallePedidoModel> GetDetallePedidos()
         {
-            return this.detallePedidoDb.GetDetallePedidoList();
+            return this.detallePedidoDb.GetDetallePedidos();
         }
+
     }
 
   

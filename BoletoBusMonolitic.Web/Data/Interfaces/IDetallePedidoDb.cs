@@ -5,7 +5,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     public interface IDetallePedidoDb
     {
         DetallePedidoModel GetDetallePedidoModel(int idDetallePedido);
-        List<DetallePedidoModel> GetDetallePedidoList();
+        List<DetallePedidoModel> GetDetallePedidos();
         void Mostrar(DetallePedidoReadModel detallePedidoRead);
 
     }
