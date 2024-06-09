@@ -6,11 +6,12 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     {
         //Atributos de la entidad
 
-        private int IdViaje { get; set; }
-        private int IdPasajero { get; set; }
-        private int AsientoReservado { get; set; }
-        private double MontoTotal { get; set; }
-        private DateTime FechaCreacion { get; set; }
+        public int IdReserva { get; set; }
+        public int IdViaje { get; set; }
+        public int IdPasajero { get; set; }
+        public int AsientoReservado { get; set; }
+        public double MontoTotal { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
     }
 }

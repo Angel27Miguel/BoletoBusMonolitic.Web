@@ -10,21 +10,41 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     {
         private readonly BoletoBusContext context;
         private readonly ReservaDetalleException exception;
-        private ReservaDetalle reservaDetalle;
+       
 
         public ReservaDetalleDb(BoletoBusContext context, ReservaDetalleException exception)
         {
             this.context = context;
             this.exception = exception;
         }
-        public List<ReservaDetalle> GetReservaDetalleList()
+
+        public List<ReservaDetalleModel> GetReservaDetalleList()
         {
-            throw new NotImplementedException();
+            return this.context.ReservaDetalle.Select(cd => new ReservaDetalleModel()
+            {
+                IdReservaDetalle = cd.IdReservaDetalle,
+                IdReserva = cd.IdReserva,
+                IdAsiento = cd.IdAsiento,
+                FechaCreacion = cd.FechaCreacion
+
+    }).ToList();
         }
 
         public ReservaDetalleModel GetReservaDetalleModel(int IdReservaDetalle)
         {
-            throw new NotImplementedException();
+            var reserva = this.context.ReservaDetalle.Find(IdReservaDetalle);
+
+            ArgumentNullException.ThrowIfNull(reserva, "Reserva no encontrado");
+
+            ReservaDetalleModel reservaModel = new ReservaDetalleModel()
+            {
+                IdReservaDetalle = reserva.IdReservaDetalle,
+                IdReserva = reserva.IdReserva,
+                IdAsiento = reserva.IdAsiento,
+                FechaCreacion = reserva.FechaCreacion
+
+            };
+            return reservaModel;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IReserva
     {
-        List<Reserva> GetReservaList();
+        List<ReservaModel> GetReservaList();
 
         public void GuardarReserva(ReservaGuardarModel reservaGuardar);
 

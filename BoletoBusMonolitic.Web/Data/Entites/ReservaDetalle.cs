@@ -5,9 +5,10 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     public class ReservaDetalle : BaseEntity
     {
         //Atributos de la entidad 
-        private int IdReserva { get; set; }
-        private int IdAsiento { get; set; }
-        private DateTime FechaCreacion { get; set; }
+        public int IdReservaDetalle { get; set; }
+        public int IdReserva { get; set; }
+        public int IdAsiento { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
     }
 }

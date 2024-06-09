@@ -19,27 +19,78 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         }
         public void EditarReserva(ReservaEditarModel reservaEditar)
         {
-            throw new NotImplementedException();
+            var editarReserva = this.context.Reserva.Find(reservaEditar);
+            if (editarReserva == null) { }
+
+           editarReserva.IdViaje = reservaEditar.IdViaje;
+            editarReserva.IdReserva = reservaEditar.IdReserva;
+            editarReserva.IdPasajero = reservaEditar.IdPasajero;
+            editarReserva.AsientoReservado = reservaEditar.AsientoReservado;
+            editarReserva.MontoTotal = reservaEditar.MontoTotal;
+
+            this.context.Update(editarReserva);
+            this.context.SaveChanges();
+
         }
 
         public void EliminarReserva(ReservaEliminarModel reservaEliminar)
         {
-            throw new NotImplementedException();
+            var eliminarReserva = this.context.Reserva.Find(reservaEliminar);
+            if (eliminarReserva == null) { }
+
+            eliminarReserva.IdReserva = reservaEliminar.IdReserva;
+            eliminarReserva.IdPasajero = reservaEliminar.IdPasajero;
+            
+
+            this.context.Update(eliminarReserva);
+            this.context.SaveChanges();
         }
 
-        public List<Reserva> GetReservaList()
+        public List<ReservaModel> GetReservaList()
         {
-            throw new NotImplementedException();
+            return this.context.Reserva.Select(cd => new ReservaModel()
+            {
+                IdReserva = cd.IdReserva,
+                IdViaje = cd.IdViaje,
+                IdPasajero = cd.IdPasajero,
+                AsientoReservado = cd.AsientoReservado,
+                MontoTotal = cd.MontoTotal,
+                FechaCreacion = cd.FechaCreacion
+
+            }).ToList();
         }
 
         public ReservaModel GetReservaModel(int IdReserva)
         {
-            throw new NotImplementedException();
+            var reserva = this.context.Reserva.Find(IdReserva);
+
+            ArgumentNullException.ThrowIfNull(reserva, "Reserva no encontrado");
+
+            ReservaModel reservaModel = new ReservaModel()
+            {
+                IdReserva = reserva.IdReserva,
+                IdViaje = reserva.IdViaje,
+                IdPasajero = reserva.IdPasajero,
+                AsientoReservado= reserva.AsientoReservado,
+                MontoTotal = reserva.MontoTotal,
+                FechaCreacion = reserva.FechaCreacion
+                
+            };
+            return reservaModel;
         }
 
         public void GuardarReserva(ReservaGuardarModel reservaGuardar)
         {
-            throw new NotImplementedException();
+            Reserva reserva = new Reserva() {
+
+                IdViaje = reservaGuardar.IdViaje,
+                IdPasajero = reservaGuardar.IdPasajero,
+                AsientoReservado = reservaGuardar.AsientoReservado,
+                MontoTotal = reservaGuardar.MontoTotal
+
+             };
+            this.context.Add(reserva);
+            this.context.SaveChanges();
         }
     }
 }

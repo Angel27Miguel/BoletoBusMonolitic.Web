@@ -5,7 +5,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IReservaDetalle
     {
-        List<ReservaDetalle> GetReservaDetalleList();
+        List<ReservaDetalleModel> GetReservaDetalleList();
 
         ReservaDetalleModel GetReservaDetalleModel(int IdReservaDetalle);
     }
