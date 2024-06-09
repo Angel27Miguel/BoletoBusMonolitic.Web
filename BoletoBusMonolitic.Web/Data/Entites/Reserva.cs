@@ -6,12 +6,12 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     {
         //Atributos de la entidad
 
-        private int IdViaje;
-        private int IdPasajero;
-        private int AsientoReservado;
-        private double MontoTotal;
-        private DateTime FechaCreacion;
-       
+        private int IdViaje { get; set; }
+        private int IdPasajero { get; set; }
+        private int AsientoReservado { get; set; }
+        private double MontoTotal { get; set; }
+        private DateTime FechaCreacion { get; set; }
+
     }
 }
 //Angel Miguel de la Rosa

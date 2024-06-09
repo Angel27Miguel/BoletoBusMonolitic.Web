@@ -10,7 +10,6 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     {
         private readonly BoletoBusContext context;
         private readonly EmpleadosException exception;
-        private Empleados empleados;
 
         public EmpleadoDb(BoletoBusContext context, EmpleadosException exception)
         {

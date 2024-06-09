@@ -6,10 +6,10 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     {
         //Atributos de la entidad 
 
-        private string Nombre;
-        private string Cargo;
+        private string? Nombre { get; set; }
+        private string? Cargo { get; set; }
 
-    
+
     }
 }
 //Angel Miguel de la Rosa

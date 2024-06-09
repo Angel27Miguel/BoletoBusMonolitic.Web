@@ -11,7 +11,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
     {
         private readonly BoletoBusContext context;
         private readonly ViajeException exception;
-        private Viaje viaje;
+        
 
         public ViajeDb(BoletoBusContext context, ViajeException exception)
         {
@@ -20,40 +20,40 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
-            var viaje = this.context.Viaje.Find(viajeEditar);
-            if (viaje == null)
+            var viajeEdita = this.context.Viaje.Find(viajeEditar);
+            if (viajeEdita == null)
             {
                 exception.ErrorMessage();
             }
 
-            
-            viajeEditar.IdBus = viajeEditar.IdBus;
-            viajeEditar.IdRuta = viajeEditar.IdRuta;
-            viajeEditar.IdPasajero = viajeEditar.IdPasajero;
-            viajeEditar.FechaSalida = viajeEditar.FechaSalida;
-            viajeEditar.HoraSalida = viajeEditar.HoraSalida;
-            viajeEditar.FechaLlegada = viajeEditar.FechaLlegada;
-            viajeEditar.HoraLlegada = viajeEditar.HoraLlegada;
-            viajeEditar.Precio = viajeEditar.Precio;
 
-            this.context.Viaje.Update(viaje);
+            viajeEdita.IdBus = viajeEditar.IdBus;
+            viajeEdita.IdRuta = viajeEditar.IdRuta;
+            viajeEdita.IdPasajero = viajeEditar.IdPasajero;
+            viajeEdita.FechaSalida = viajeEditar.FechaSalida;
+            viajeEdita.HoraSalida = viajeEditar.HoraSalida;
+            viajeEdita.FechaLlegada = viajeEditar.FechaLlegada;
+            viajeEdita.HoraLlegada = viajeEditar.HoraLlegada;
+            viajeEdita.Precio = viajeEditar.Precio;
+
+            this.context.Viaje.Update(viajeEdita);
             this.context.SaveChanges();
        
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
         {
-            var viaje = this.context.Viaje.Find(viajeEliminar);
-            if (viaje == null)
+            var viajeEliminarModel = this.context.Viaje.Find(viajeEliminar.IdViaje);
+            if (viajeEliminarModel == null)
             {
                 exception.ErrorMessage();
             }
 
-            viajeEliminar.Deleted = viajeEliminar.Deleted;
-            viajeEliminar.DeleteDate = viajeEliminar.DeleteDate;
-            viajeEliminar.ViajeDelete = viajeEliminar.ViajeDelete;
+            viajeEliminarModel.Deleted = viajeEliminar.Deleted;
+            viajeEliminarModel.DeletedDate = viajeEliminar.DeleteDate;
+            viajeEliminarModel.IdViaje = viajeEliminar.IdViaje;
 
-            this.context.Viaje.Remove(viaje);
+            this.context.Viaje.Remove(viajeEliminarModel);
             this.context.SaveChanges();
 
         }
@@ -62,9 +62,11 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         {
             var viaje = this.context.Viaje.Find(IdViaje);
 
+            ArgumentNullException.ThrowIfNull(viaje,"Viaje no encontrado");
+
             ViajeModel viajeModel = new ViajeModel()
             {
-                IdViaje = viaje.IdViaje,
+  
                 IdBus = viaje.IdBus,
                 IdRuta = viaje.IdRuta,
                 IdPasajero = viaje.IdPasajero,

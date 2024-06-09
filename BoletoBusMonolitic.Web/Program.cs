@@ -7,17 +7,16 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<BoletoBusContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
+//// Add services to the container.
+//builder.Services.AddDbContext<BoletoBusContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
+//// Agregar las dependencias del objeto de datos
+//builder.Services.AddScoped<IViajeDb, ViajeDb>();
 
-// Agregar las dependencias del objeto de datos //
-builder.Services.AddScoped<IViajeDb, ViajeDb>();
+//// Agregar las dependencias del BL
+//builder.Services.AddTransient<IviajeServices, ViajeService>();
 
-
-// Agregar las dependencias del BL //
-builder.Services.AddTransient<IviajeServices, ViajeService>();
 
 
 builder.Services.AddControllersWithViews();
@@ -28,11 +27,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
