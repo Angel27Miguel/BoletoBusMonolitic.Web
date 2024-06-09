@@ -25,23 +25,24 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             {
                 exception.ErrorMessage();
             }
-            Viaje viaje2 = new Viaje()
-            {
 
-                ViajeId = viajeEditar.IdViaje,
-                IdBus = viajeEditar.IdBus,
-                Bus = viajeEditar.Bus,
-                IdRuta = viajeEditar.IdRuta,
-                IdPasajero = viajeEditar.IdPasajero,
-                Pasajero = viajeEditar.Pasajero,
-                Ruta = viajeEditar.Ruta,
-                FechaSalida = viajeEditar.FechaSalida,
-                HoraSalida = viajeEditar.HoraSalida,
-                FechaLlegada = viajeEditar.FechaLlegada,
-                HoraLlegada = viajeEditar.HoraLlegada,
-                Precio = viajeEditar.Precio,
 
-            };
+            
+            viajeEditar.IdBus = viajeEditar.IdBus;
+            viajeEditar.Bus = viajeEditar.Bus;
+            viajeEditar.IdRuta = viajeEditar.IdRuta;
+            viajeEditar.IdPasajero = viajeEditar.IdPasajero;
+            viajeEditar.Pasajero = viajeEditar.Pasajero;
+            viajeEditar.Ruta = viajeEditar.Ruta;
+            viajeEditar.FechaSalida = viajeEditar.FechaSalida;
+            viajeEditar.HoraSalida = viajeEditar.HoraSalida;
+            viajeEditar.FechaLlegada = viajeEditar.FechaLlegada;
+            viajeEditar.HoraLlegada = viajeEditar.HoraLlegada;
+            viajeEditar.Precio = viajeEditar.Precio;
+
+            this.context.Viajes.Update(viaje);
+            this.context.SaveChanges();
+       
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
@@ -52,6 +53,12 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 exception.ErrorMessage();
             }
 
+            viajeEliminar.Deleted = viajeEliminar.Deleted;
+            viajeEliminar.DeleteDate = viajeEliminar.DeleteDate;
+            viajeEliminar.ViajeDelete = viajeEliminar.ViajeDelete;
+
+            this.context.Viajes.Remove(viaje);
+            this.context.SaveChanges();
 
         }
 
@@ -82,9 +89,22 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
         }
 
-        public List<Viaje> GetViajeList()
+        public List<ViajeModel> GetViajeModels()
         {
-            throw new NotImplementedException();
+            return this.context.Viajes.Select(cd => new ViajeModel()
+            {
+                ViajeId = cd.ViajeId,
+                IdBus = cd.IdBus,
+                IdPasajero = cd.IdPasajero,
+                IdRuta = cd.IdRuta,
+                FechaSalida = cd.FechaSalida,
+                FechaLlegada = cd.FechaSalida,
+                Precio = cd.Precio,
+                TotalAsiento = cd.TotalAsiento,
+                AsientosDisponibles = cd.AsientosDisponibles,
+                FechaCreacion = cd.FechaCreacion
+
+    }).ToList();
         }
 
         public void GuardarViaje(ViajeGuardarModel viajeGuardar)

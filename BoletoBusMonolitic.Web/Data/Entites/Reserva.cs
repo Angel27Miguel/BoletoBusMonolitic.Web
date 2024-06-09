@@ -11,14 +11,7 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private int AsientoReservado;
         private double MontoTotal;
         private DateTime FechaCreacion;
-        public Reserva(int id, int idViaje, int idPasajero, int asientoReservado, double montoTotal, DateTime fechaCreacion) : base(id)
-        {
-            this.IdViaje = idViaje;
-            this.IdPasajero = idPasajero;
-            this.AsientoReservado = asientoReservado;
-            this.MontoTotal = montoTotal;
-            this.FechaCreacion = fechaCreacion;
-        }
+       
     }
 }
 //Angel Miguel de la Rosa

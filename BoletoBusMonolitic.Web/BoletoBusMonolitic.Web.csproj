@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BL\Interface\" />
     <Folder Include="BL\Dtoa\" />
   </ItemGroup>
 

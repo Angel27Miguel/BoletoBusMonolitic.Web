@@ -9,11 +9,7 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private string Nombre;
         private string Cargo;
 
-        public Empleados(int id, string nombre, string cargo) : base(id)
-        {
-            this.Nombre = nombre;
-            this.Cargo = cargo;
-        }
+    
     }
 }
 //Angel Miguel de la Rosa

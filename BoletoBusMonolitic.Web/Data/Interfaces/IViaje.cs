@@ -5,13 +5,12 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IViajeDb
     {
-        List<Viaje> GetViajeList();
-
+        List<ViajeModel> GetViajeModels();
         void GuardarViaje(ViajeGuardarModel viajeGuardar);
         void EditarViaje(ViajeEditarModel viajeEditar);
         void EliminarViaje(ViajeEliminarModel viajeEliminar);
 
-        ViajeModel GetViaje(int IdViaje);
+        
 
 
     }

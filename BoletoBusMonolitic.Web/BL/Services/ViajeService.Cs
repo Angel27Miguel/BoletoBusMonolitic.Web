@@ -1,6 +1,22 @@
-﻿namespace BoletoBusMonolitic.Web.BL.Services
+﻿using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
+using BoletoBusMonolitic.Web.Date.Daos;
+
+namespace BoletoBusMonolitic.Web.BL.Services
 {
-    public class ViajeService
+    public class ViajeService : IviajeServices
     {
+        private readonly IViajeDb viaje;
+
+        public ViajeService(IViajeDb viaje)
+        {
+            this.viaje = viaje;
+        }
+       
+        public List<ViajeModel> GetViajeList()
+        {
+            return this.viaje.GetViajeList();
+        }
     }
 }
