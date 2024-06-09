@@ -16,13 +16,14 @@ namespace BoletoBusMonolitic.Web.Data.Daos
 
         public DetallePedidoModel GetDetallePedidoModel(int idDetallePedido)
         {
-
             var detallePedido = this.context.DetallePedido.Find(idDetallePedido);
 
-            ArgumentNullException.ThrowIfNull(detallePedido, "Este pedido no se encuentra registrado.");
+            if (detallePedido == null)
+            {
+                throw new ArgumentNullException("Este detalle de pedido no se encuentra registrado.");
+            }
 
-
-            DetallePedidoModel detallePedidoModel = new DetallePedidoModel()
+            return new DetallePedidoModel
             {
                 IdDetallePedido = detallePedido.IdDetallePedido,
                 IdPedido = detallePedido.IdPedido,
@@ -30,8 +31,6 @@ namespace BoletoBusMonolitic.Web.Data.Daos
                 Cantidad = detallePedido.Cantidad,
                 Subtotal = detallePedido.Subtotal,
             };
-
-            return detallePedidoModel;
         }
 
         public void Mostrar(DetallePedidoReadModel detallePedidoRead)
@@ -42,9 +41,6 @@ namespace BoletoBusMonolitic.Web.Data.Daos
                 throw new ArgumentException("El detalle de pedido no se encuentra registrado.");
             }
         }
-
-
-
         public List<DetallePedidoModel> GetDetallePedidoList()
         {
             return this.context.DetallePedido.Select(cdp => new DetallePedidoModel()

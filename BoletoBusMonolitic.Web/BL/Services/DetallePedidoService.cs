@@ -17,7 +17,7 @@ namespace BoletoBusMonolitic.BL.Services
         }
         public List<DetallePedidoModel> GetDetallePedidos()
         {
-            return this.detallePedidoDb.GetDetallePedidos();
+            return this.detallePedidoDb.GetDetallePedidoList();
         }
     }
 

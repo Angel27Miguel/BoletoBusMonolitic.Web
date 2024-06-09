@@ -1,5 +1,4 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
-using BoletoBusMonolitic.Web.Data.Models;
+﻿using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
