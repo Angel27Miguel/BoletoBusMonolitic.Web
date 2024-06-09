@@ -1,3 +1,5 @@
+using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.BL.Services;
 using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Date.Daos;
@@ -15,7 +17,7 @@ builder.Services.AddScoped<IViajeDb, ViajeDb>();
 
 
 // Agregar las dependencias del BL //
-builder.Services.AddTransient<IDepartmentService, DepartmentService>();
+builder.Services.AddTransient<IviajeServices, ViajeService>();
 
 
 builder.Services.AddControllersWithViews();

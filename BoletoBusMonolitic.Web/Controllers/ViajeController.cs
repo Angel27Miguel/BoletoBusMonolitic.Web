@@ -1,24 +1,27 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ViajeController : Controller
     {
 
-       private readonly ViajeDb viajeDb;
+       private readonly IViajeDb viajeDb;
 
-        public ViajeController(ViajeDb viajeDb)
+        public ViajeController(IViajeDb viajeDb)
         {
             this.viajeDb = viajeDb;
         }
         // GET: ViajeController1
         public ActionResult Index()
         {
-            var Viaje = this.viajeDb.GetViajeList();
-            return View();
+            var viaje = this.viajeDb.GetViajeModels();
+            return View(viajeDb);
+            
         }
 
         // GET: ViajeController1/Details/5

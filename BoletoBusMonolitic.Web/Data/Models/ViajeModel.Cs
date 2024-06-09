@@ -4,7 +4,7 @@ namespace BoletoBusMonolitic.Web.Data.Models
 {
     public class ViajeModel
     {
-        public int ViajeId { get; set; }
+        public int IdViaje { get; set; }
         public int IdBus { get; set; }
         public string? Bus { get; set; }
         public int IdRuta { get; set; }

@@ -14,9 +14,9 @@ namespace BoletoBusMonolitic.Web.BL.Services
             this.viaje = viaje;
         }
        
-        public List<ViajeModel> GetViajeList()
+        public List<ViajeModel> GetViajeModels()
         {
-            return this.viaje.GetViajeList();
+            return this.viaje.GetViajeModels();
         }
     }
 }

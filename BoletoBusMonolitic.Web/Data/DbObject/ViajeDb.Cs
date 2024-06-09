@@ -20,7 +20,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
-            var viaje = this.context.Viajes.Find(viajeEditar);
+            var viaje = this.context.Viaje.Find(viajeEditar);
             if (viaje == null)
             {
                 exception.ErrorMessage();
@@ -40,14 +40,14 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             viajeEditar.HoraLlegada = viajeEditar.HoraLlegada;
             viajeEditar.Precio = viajeEditar.Precio;
 
-            this.context.Viajes.Update(viaje);
+            this.context.Viaje.Update(viaje);
             this.context.SaveChanges();
        
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
         {
-            var viaje = this.context.Viajes.Find(viajeEliminar);
+            var viaje = this.context.Viaje.Find(viajeEliminar);
             if (viaje == null)
             {
                 exception.ErrorMessage();
@@ -57,18 +57,18 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             viajeEliminar.DeleteDate = viajeEliminar.DeleteDate;
             viajeEliminar.ViajeDelete = viajeEliminar.ViajeDelete;
 
-            this.context.Viajes.Remove(viaje);
+            this.context.Viaje.Remove(viaje);
             this.context.SaveChanges();
 
         }
 
         public ViajeModel GetViaje(int IdViaje)
         {
-            var viaje = this.context.Viajes.Find(IdViaje);
+            var viaje = this.context.Viaje.Find(IdViaje);
 
             ViajeModel viajeModel = new ViajeModel()
             {
-                ViajeId = viaje.ViajeId,
+                IdViaje = viaje.IdViaje,
                 IdBus = viaje.IdBus,
                 Bus = viaje.Bus,
                 IdRuta = viaje.IdRuta,
@@ -91,9 +91,9 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
         public List<ViajeModel> GetViajeModels()
         {
-            return this.context.Viajes.Select(cd => new ViajeModel()
+            return this.context.Viaje.Select(cd => new ViajeModel()
             {
-                ViajeId = cd.ViajeId,
+                IdViaje = cd.IdViaje,
                 IdBus = cd.IdBus,
                 IdPasajero = cd.IdPasajero,
                 IdRuta = cd.IdRuta,
@@ -125,7 +125,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 Precio = viajeGuardar.Precio,
 
             };
-            this.context.Viajes.Add(viaje);
+            this.context.Viaje.Add(viaje);
             this.context.SaveChanges();
         }
 

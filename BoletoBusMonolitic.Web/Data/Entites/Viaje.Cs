@@ -9,7 +9,7 @@ public class Viaje : BaseEntity
 
     #region "Atributos"
 
-    public int ViajeId { get; set; }
+    public int IdViaje { get; set; }
     public int IdBus { get; set; }
     public string? Bus { get; set; }
     public int IdRuta { get; set; }
