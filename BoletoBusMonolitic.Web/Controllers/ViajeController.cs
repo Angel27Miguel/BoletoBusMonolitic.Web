@@ -20,7 +20,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Index()
         {
             var viaje = this.viajeDb.GetViajeModels();
-            return View(viajeDb);
+            return View(viaje);
             
         }
 

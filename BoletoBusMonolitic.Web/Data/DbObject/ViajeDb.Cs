@@ -26,14 +26,10 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 exception.ErrorMessage();
             }
 
-
             
             viajeEditar.IdBus = viajeEditar.IdBus;
-            viajeEditar.Bus = viajeEditar.Bus;
             viajeEditar.IdRuta = viajeEditar.IdRuta;
             viajeEditar.IdPasajero = viajeEditar.IdPasajero;
-            viajeEditar.Pasajero = viajeEditar.Pasajero;
-            viajeEditar.Ruta = viajeEditar.Ruta;
             viajeEditar.FechaSalida = viajeEditar.FechaSalida;
             viajeEditar.HoraSalida = viajeEditar.HoraSalida;
             viajeEditar.FechaLlegada = viajeEditar.FechaLlegada;
@@ -70,11 +66,8 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             {
                 IdViaje = viaje.IdViaje,
                 IdBus = viaje.IdBus,
-                Bus = viaje.Bus,
                 IdRuta = viaje.IdRuta,
                 IdPasajero = viaje.IdPasajero,
-                Pasajero = viaje.Pasajero,
-                Ruta = viaje.Ruta,
                 FechaSalida = viaje.FechaSalida,
                 HoraSalida = viaje.HoraSalida,
                 FechaLlegada = viaje.FechaLlegada,
@@ -113,11 +106,8 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             {
 
                 IdBus = viajeGuardar.IdBus,
-                Bus = viajeGuardar.Bus,
                 IdRuta = viajeGuardar.IdRuta,
                 IdPasajero = viajeGuardar.IdPasajero,
-                Pasajero = viajeGuardar.Pasajero,
-                Ruta = viajeGuardar.Ruta,
                 FechaSalida = viajeGuardar.FechaSalida,
                 HoraSalida = viajeGuardar.HoraSalida,
                 FechaLlegada = viajeGuardar.FechaLlegada,
