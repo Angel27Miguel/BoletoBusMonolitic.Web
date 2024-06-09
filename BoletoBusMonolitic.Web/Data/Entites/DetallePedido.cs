@@ -4,21 +4,11 @@ namespace BoletoBusMonolitic.Web.Data.Entites
 {
     public class DetallePedido : BaseEntity
     {
-        //atributos
-        private int IdDetallePedido;
-        private int IdPedido;
-        private int IdPlato;
-        private int Cantidad;
-        private double Subtotal;
-
-        public DetallePedido(int Id, int IdDetallePedido, int IdPedido, int IdPlato, int Cantidad, double Subtotal) : base(Id)
-        {
-            this.IdDetallePedido = IdDetallePedido;
-            this.IdPedido = IdPedido;
-            this.IdPlato = IdPlato;
-            this.Cantidad = Cantidad;
-            this.Subtotal = Subtotal;
-        }
+        public int IdDetallePedido { get; set; }
+        public int IdPedido { get; set; }
+        public int IdPlato { get; set; }
+        public int Cantidad { get; set; }
+        public int Subtotal { get; set; }
     }
 }
 //Ismael Garcia

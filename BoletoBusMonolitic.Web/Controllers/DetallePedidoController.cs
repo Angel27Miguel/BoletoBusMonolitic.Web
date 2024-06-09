@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
@@ -16,7 +17,7 @@ namespace BoletoBusMonolitic.Web.Controllers
 
         public ActionResult Index()
         {
-            var Pedido = this.context. Pedido.ToList();
+            var DetallePedido = this.context.DetallePedido.ToList();
             return View();
         }
 

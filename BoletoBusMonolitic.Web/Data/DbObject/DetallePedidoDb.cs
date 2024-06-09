@@ -1,33 +1,56 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Daos
 {
-    public class DetallePedidoDb : IDetallePedido
+    public class DetallePedidoDb : IDetallePedidoDb
     {
-        public void Actualizar()
+        private readonly BoletoBusContext context;
+
+        public DetallePedidoDb(BoletoBusContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public void Agregar()
+        public DetallePedidoModel GetDetallePedidoModel(int idDetallePedido)
         {
-            throw new NotImplementedException();
+            var detallePedido = this.context.DetallePedido.Find(idDetallePedido);
+
+            if (detallePedido == null)
+            {
+                throw new ArgumentNullException("Este detalle de pedido no se encuentra registrado.");
+            }
+
+            return new DetallePedidoModel
+            {
+                IdDetallePedido = detallePedido.IdDetallePedido,
+                IdPedido = detallePedido.IdPedido,
+                IdPlato = detallePedido.IdPlato,
+                Cantidad = detallePedido.Cantidad,
+                Subtotal = detallePedido.Subtotal,
+            };
         }
 
-        public void Eliminar()
+        public void Mostrar(DetallePedidoReadModel detallePedidoRead)
         {
-            throw new NotImplementedException();
+            var detallePedido = this.context.DetallePedido.Find(detallePedidoRead.IdDetallePedido);
+            if (detallePedido == null)
+            {
+                throw new ArgumentException("El detalle de pedido no se encuentra registrado.");
+            }
         }
-
-        public List<DetallePedido> GetDetallePedidoList()
+        public List<DetallePedidoModel> GetDetallePedidoList()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Mostrar()
-        {
-            throw new NotImplementedException();
+            return this.context.DetallePedido.Select(cdp => new DetallePedidoModel()
+            {
+                IdDetallePedido = cdp.IdDetallePedido,
+                IdPedido = cdp.IdPedido,
+                IdPlato = cdp.IdPedido,
+                Cantidad = cdp.Cantidad,
+                Subtotal = cdp.Subtotal,
+            }).ToList();
         }
     }
 }

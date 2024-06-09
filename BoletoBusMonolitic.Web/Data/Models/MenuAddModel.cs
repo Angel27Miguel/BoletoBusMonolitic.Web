@@ -1,8 +1,7 @@
 ﻿namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class MenuModel
+    public class MenuAddModel
     {
-        public int IdPlato { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public double Precio { get; set; }

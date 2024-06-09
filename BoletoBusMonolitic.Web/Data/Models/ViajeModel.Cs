@@ -1,7 +1,0 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
-{
-    public class ViajeModel
-    {
-    }
-}
-//Angel Miguel de la Rosa
