@@ -16,8 +16,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: EmpleadosController
         public ActionResult Index()
         {
-            var empleado = this.empleadoDb.GetEmpleadosList();
-            return View(empleadoDb);
+        
+            return View();
         }
 
         // GET: EmpleadosController/Details/5

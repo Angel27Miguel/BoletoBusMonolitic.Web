@@ -5,7 +5,7 @@ using BoletoBusMonolitic.Web.Date.Daos;
 
 namespace BoletoBusMonolitic.Web.BL.Services
 {
-    public class ViajeService : IviajeServices
+    public class ViajeService : IviajeService
     {
         private readonly IViajeDb viaje;
 

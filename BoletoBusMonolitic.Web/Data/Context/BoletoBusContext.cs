@@ -15,6 +15,7 @@ namespace BoletoBusMonolitic.Web.Data.Context
             public DbSet<ReservaDetalle> ReservaDetalle { get; set; }
             #endregion
 
+
     
     }
     }
