@@ -1,17 +1,21 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IAsiento
     {
-        List<Asiento> GetAsientoList();
+        List<AsientoModel> GetAsientoModels();
+        AsientoModel GetAsientoModel(int idAsiento);
 
-        public void agregarAsiento();
+        public void AgregarAsiento(AsientoAgregarModel asientoAgregar);
 
-        public void eliminarAsiento();
+        public void EliminarAsiento(AsientoEliminarModel asientoEliminar);
         
-        public void actualizarAsiento();
+        public void EditarAsiento(AsientoEditarModel asientoEditar);
 
-        public void buscarAsiento();
+
+
+        
     }
 }

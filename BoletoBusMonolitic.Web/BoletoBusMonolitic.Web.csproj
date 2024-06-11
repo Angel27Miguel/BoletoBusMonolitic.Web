@@ -16,6 +16,7 @@
   <ItemGroup>
     <Folder Include="BL\Interface\" />
     <Folder Include="BL\Dtoa\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>
