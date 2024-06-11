@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,18 +7,17 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class MenuController : Controller
     {
-        private BoletoBusContext context;
+        private readonly IMenuDb menuService;
 
-        public MenuController()
+        public MenuController(IMenuDb menuDb)
         {
-            this.context = new BoletoBusContext();
-
+            this.menuService = menuDb;
         }
         // GET: MenuController
         public ActionResult Index()
         {
-            var Menu = this.context.Menu.ToList();
-            return View();
+            var Menu = this.menuService.GetMenus();
+            return View(Menu);
         }
 
         // GET: MenuController/Details/5

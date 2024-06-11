@@ -1,8 +1,11 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
+﻿using BoletoBusMonolitic.Web.Data.Core;
+using System;
+
+namespace BoletoBusMonolitic.Web.Data.Entities
 {
-    public class MenuModel
+    public class Menu : BaseEntity
     {
-        public int MenuModelId { get; set; }
+        public int MenuId { get; set; }
         public int IdPlato { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;

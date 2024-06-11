@@ -1,8 +1,9 @@
 using BoletoBusMonolitic.BL.Services;
 using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.BL.Services;
 using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Daos;
-using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +15,13 @@ builder.Services.AddDbContext<BoletoBusContext>(options =>
 
 // Agregar las dependencias del objeto de datos
 builder.Services.AddScoped<IDetallePedidoDb, DetallePedidoDb>();
+builder.Services.AddScoped<IMenuDb, MenuDb>();
+builder.Services.AddScoped<IPedidoDb, PedidoDb>();
 
 // Agregar las dependencias del BL
 builder.Services.AddTransient<IDetallePedidoService, DetallePedidoService>();
+builder.Services.AddTransient<IPedidoService, PedidoService>();
+builder.Services.AddTransient<IMenuService, MenuService>();
 
 // Agregar servicios de autorización
 builder.Services.AddAuthorization();

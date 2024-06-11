@@ -1,5 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
-using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 
@@ -56,18 +56,6 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context.SaveChanges();
         }
 
-        public List<PedidoModel> GetPedidoList()
-        {
-            return this.context.Pedido.Select(cp => new PedidoModel()
-            {
-                IdPedido = cp.IdPedido,
-                IdCliente = cp.IdCliente,
-                IdMesa = cp.IdMesa,
-                Fecha = cp.Fecha,
-                Total = cp.Total,
-            }).ToList();
-        }
-
         public PedidoModel GetPedidoModel(int idPedido)
         {
 
@@ -88,5 +76,16 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             return pedidoModel;
         }
 
+        public List<PedidoModel> GetPedidos()
+        {
+            return this.context.Pedido.Select(cp => new PedidoModel()
+            {
+                IdPedido = cp.IdPedido,
+                IdCliente = cp.IdCliente,
+                IdMesa = cp.IdMesa,
+                Fecha = cp.Fecha,
+                Total = cp.Total,
+            }).ToList();
+        }
     }
 }

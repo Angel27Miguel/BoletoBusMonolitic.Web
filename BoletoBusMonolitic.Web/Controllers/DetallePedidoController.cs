@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,19 +7,18 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class DetallePedidoController : Controller
     {
-        private BoletoBusContext context;
+        private readonly IDetallePedidoDb detallePedidoService;
 
-        public DetallePedidoController()
+        public DetallePedidoController(IDetallePedidoDb detallePedidoDb)
         {
-            this.context = new BoletoBusContext();
-            
+            this.detallePedidoService = detallePedidoDb;
         }
         // GET: DetallePedidoController
 
         public ActionResult Index()
         {
-            var DetallePedido = this.context.DetallePedido.ToList();
-            return View();
+            var DetallePedido = this.detallePedidoService.GetDetallePedidos();
+            return View(DetallePedido);
         }
 
         // GET: DetallePedidoController/Details/5
