@@ -1,8 +1,9 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
+﻿using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 
 using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Exeptions;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject
 {
@@ -10,7 +11,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     {
 
         private readonly BoletoBusContext context;
-        private readonly EmpleadosException exception;
+        private readonly RutaException exception;
         public void actualizarRuta()
         {
             throw new NotImplementedException();

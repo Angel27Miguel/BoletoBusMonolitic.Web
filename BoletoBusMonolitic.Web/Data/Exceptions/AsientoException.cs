@@ -1,4 +1,4 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Exceptions
+﻿namespace BoletoBusMonolitic.Web.Data.Exeptions
 {
     public class AsientoException : Exception
     {
