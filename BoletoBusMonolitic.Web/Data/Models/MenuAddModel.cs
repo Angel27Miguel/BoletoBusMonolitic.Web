@@ -2,9 +2,10 @@
 {
     public class MenuAddModel
     {
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
+        public int MenuAddModelId { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
         public double Precio { get; set; }
-        public string Categoria { get; set; }
+        public string Categoria { get; set; } = string.Empty;
     }
 }

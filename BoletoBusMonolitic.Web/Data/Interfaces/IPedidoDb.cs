@@ -4,7 +4,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IPedidoDb
     {
-        List<PedidoModel> GetPedidoList();
+        List<PedidoModel> GetPedidos();
         PedidoModel GetPedidoModel(int idPedido);
         public void Actualizar(PedidoUpdateModel pedidoUpdate);
         public void Eliminar(PedidoRemoveModel pedidoRemove);

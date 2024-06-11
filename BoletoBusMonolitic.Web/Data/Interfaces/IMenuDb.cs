@@ -4,7 +4,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IMenuDb
     {
-        List<MenuModel> GetMenuList();
+        List<MenuModel> GetMenus();
         MenuModel GetMenuModel(int idPlato);
         public void Agregar(MenuAddModel menuAdd);
         public void Actualizar(MenuUpdateModel menuUpdate);
