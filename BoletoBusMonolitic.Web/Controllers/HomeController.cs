@@ -30,9 +30,3 @@ namespace BoletoBusMonolitic.Web.Controllers
         }
     }
 }
-
-
-
-
-
-
