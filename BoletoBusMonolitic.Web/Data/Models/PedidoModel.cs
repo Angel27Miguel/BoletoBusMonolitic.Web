@@ -2,7 +2,6 @@
 {
     public class PedidoModel
     {
-        public int PedidoModelId { get; set; }
         public int IdPedido { get; set; }
         public int IdCliente { get; set; }
         public int IdMesa { get; set;}

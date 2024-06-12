@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<BoletoBusContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext"),
+    sqlOptions => sqlOptions.EnableRetryOnFailure()));
 
 // Agregar las dependencias del objeto de datos
 builder.Services.AddScoped<IDetallePedidoDb, DetallePedidoDb>();

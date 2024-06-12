@@ -19,13 +19,6 @@ namespace BoletoBusMonolitic.Web.Controllers
             var Menu = this.menuService.GetMenus();
             return View(Menu);
         }
-
-        // GET: MenuController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: MenuController/Create
         public ActionResult Create()
         {
