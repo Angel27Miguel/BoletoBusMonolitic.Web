@@ -1,4 +1,6 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
+﻿using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 
@@ -6,6 +8,15 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 {
     public class BusDb : IBus
     {
+        private readonly BoletoBusContext context;
+        private readonly RutaException exception;
+
+        public BusDb(BoletoBusContext context, RutaException exception)
+        {
+            this.context = context;
+            this.exception = exception;
+        }
+
         public void AgregarBus(BusGuardarModel busGuardar)
         {
             throw new NotImplementedException();

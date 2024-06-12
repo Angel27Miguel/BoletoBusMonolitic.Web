@@ -1,7 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
-
 using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Exeptions;
 
@@ -12,42 +11,28 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         private readonly BoletoBusContext context;
         private readonly RutaException exception;
-        public void actualizarRuta()
-        {
-            throw new NotImplementedException();
-        }
 
         public void AgregarRuta(RutaAgregarModel rutaAgregar)
         {
             throw new NotImplementedException();
         }
 
-        public void buscarRuta()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crearRuta()
-        {
-            throw new NotImplementedException();
-        }
-
         public void EditarRuta(RutaEditarModel rutaEditar)
         {
-            throw new NotImplementedException();
-        }
+            var RutaEdita = this.context.Ruta.Find();
+            if (RutaEdita == null)
+            {
 
-        public void eliminarRuta()
-        {
-            throw new NotImplementedException();
+            }
+
+            RutaEdita.Nombre = RutaEditar.Nombre;
+            RutaEdita.Cargo = Editar.Cargo;
+
+            this.context.Empleado.Update(EmpleadoEdita);
+            this.context.SaveChanges();
         }
 
         public void EliminarRuta(RutaEliminarModel rutaEliminar)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Ruta> GetRutaList()
         {
             throw new NotImplementedException();
         }
