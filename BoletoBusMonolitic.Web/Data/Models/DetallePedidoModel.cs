@@ -2,7 +2,6 @@
 {
     public class DetallePedidoModel
     {
-        public int DetallePedidoModelId { get; set; }
         public int IdDetallePedido { get; set; }
         public int IdPedido { get; set;}
         public int IdPlato { get; set; }

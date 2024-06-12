@@ -21,12 +21,6 @@ namespace BoletoBusMonolitic.Web.Controllers
             return View(DetallePedido);
         }
 
-        // GET: DetallePedidoController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: DetallePedidoController/Create
         public ActionResult Create()
         {
