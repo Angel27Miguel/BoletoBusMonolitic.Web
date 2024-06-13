@@ -9,19 +9,19 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class EmpleadoDb : IEmpleados
     {
         private readonly BoletoBusContext context;
-        private readonly EmpleadosException exception;
+  
 
-        public EmpleadoDb(BoletoBusContext context, EmpleadosException exception)
+        public EmpleadoDb(BoletoBusContext context)
         {
             this.context = context;
-            this.exception = exception;
+            
         }
         public void EditarEmpleados(EmpleadosEditarModel empleadosEditar)
         {
             var EmpleadoEdita = this.context.Empleado.Find(empleadosEditar);
             if (EmpleadoEdita == null)
             {
-                
+                throw new ArgumentException("Empleado no encontrado");
             }
 
             EmpleadoEdita.Nombre = empleadosEditar.Nombre;
@@ -36,8 +36,10 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             var empleadoMobelEliminar = this.context.Empleado.Find(empleadosEliminar.IdEmpleado);
             if (empleadoMobelEliminar == null)
             {
-                exception.Error();
+                throw new ArgumentException("Empleado no encontrado");
             }
+
+
 
             empleadoMobelEliminar.EmpleadoId = empleadosEliminar.IdEmpleado;
 

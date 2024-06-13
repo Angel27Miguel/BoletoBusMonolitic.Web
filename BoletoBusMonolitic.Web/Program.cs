@@ -1,15 +1,8 @@
-
-
-using BoletoBusMonolitic.Web.BL.Interface;
-using BoletoBusMonolitic.Web.BL.Services;
 using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entities;
-
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.EntityFrameworkCore;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BoletoBusContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
-//Agregar las dependencias del objeto de datos
+builder.Services.AddScoped<IEmpleados, EmpleadoDb>();
+builder.Services.AddScoped<IViajeDb, ViajeDb>();
+builder.Services.AddScoped<IReserva, ReservaDb>();
+builder.Services.AddScoped<IReservaDetalle, ReservaDetalleDb>();
 
 
-//Agregar las dependencias del BL
-
-
-
-// Agregar servicios de autorización
 builder.Services.AddAuthorization();
-
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -40,9 +30,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

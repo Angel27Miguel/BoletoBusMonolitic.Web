@@ -9,13 +9,11 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class ReservaDetalleDb : IReservaDetalle
     {
         private readonly BoletoBusContext context;
-        private readonly ReservaDetalleException exception;
        
 
-        public ReservaDetalleDb(BoletoBusContext context, ReservaDetalleException exception)
+        public ReservaDetalleDb(BoletoBusContext context)
         {
             this.context = context;
-            this.exception = exception;
         }
 
         public List<ReservaDetalleModel> GetReservaDetalleList()

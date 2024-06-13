@@ -9,18 +9,18 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class ReservaDb : IReserva
     {
         private readonly BoletoBusContext context;
-        private readonly ReservaException exception1;
        
 
-        public ReservaDb(BoletoBusContext context, ReservaException exception1)
+        public ReservaDb(BoletoBusContext context)
         {
             this.context = context;
-            this.exception1 = exception1;
         }
         public void EditarReserva(ReservaEditarModel reservaEditar)
         {
             var editarReserva = this.context.Reserva.Find(reservaEditar);
-            if (editarReserva == null) { }
+            if (editarReserva == null) {
+                throw new ArgumentException("Reserva no encontrado");
+            }
 
            editarReserva.IdViaje = reservaEditar.IdViaje;
             editarReserva.IdReserva = reservaEditar.IdReserva;
@@ -36,7 +36,9 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         public void EliminarReserva(ReservaEliminarModel reservaEliminar)
         {
             var eliminarReserva = this.context.Reserva.Find(reservaEliminar);
-            if (eliminarReserva == null) { }
+            if (eliminarReserva == null) {
+                throw new ArgumentException("Reserva no encontrado");
+            }
 
             eliminarReserva.IdReserva = reservaEliminar.IdReserva;
             eliminarReserva.IdPasajero = reservaEliminar.IdPasajero;

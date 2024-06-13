@@ -10,20 +10,20 @@ namespace BoletoBusMonolitic.Web.Date.Daos
     public class ViajeDb : IViajeDb
     {
         private readonly BoletoBusContext context;
-        private readonly ViajeException exception;
+ 
         
 
-        public ViajeDb(BoletoBusContext context, ViajeException exception)
+        public ViajeDb(BoletoBusContext context)
         {
             this.context = context;
-            this.exception = exception;
+            
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
             var viajeEdita = this.context.Viaje.Find(viajeEditar);
             if (viajeEdita == null)
             {
-                exception.ErrorMessage();
+                throw new ArgumentException("Viaje no encontrado");
             }
 
 
@@ -46,7 +46,8 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             var viajeEliminarModel = this.context.Viaje.Find(viajeEliminar.IdViaje);
             if (viajeEliminarModel == null)
             {
-                exception.ErrorMessage();
+                throw new ArgumentException("Viaje no encontrado");
+                
             }
 
             

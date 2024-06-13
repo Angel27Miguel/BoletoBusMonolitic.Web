@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,17 +8,18 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class EmpleadosController : Controller
     {
-        private readonly EmpleadoDb empleadoDb;
+        private readonly IEmpleados empleados;
 
-        public EmpleadosController(EmpleadoDb empleadoDb)
+        public EmpleadosController(IEmpleados empleados)
         {
-            this.empleadoDb = empleadoDb;
+            this.empleados = empleados;
         }
+
         // GET: EmpleadosController
         public ActionResult Index()
         {
 
-            var empleado = this.empleadoDb.GetEmpleado();
+            var empleado = this.empleados.GetEmpleado();
             return View(empleado);
         }
 

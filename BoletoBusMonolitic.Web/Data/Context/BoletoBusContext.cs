@@ -1,6 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Context
 {
@@ -17,6 +18,7 @@ namespace BoletoBusMonolitic.Web.Data.Context
             public DbSet<Empleados> Empleado { get; set; }
             public DbSet<Reserva> Reserva { get; set; }
             public DbSet<ReservaDetalle> ReservaDetalle { get; set; }
+            public DbSet<BoletoBusMonolitic.Web.Data.Models.EmpleadosModel> EmpleadosModel { get; set; } = default!;
             #endregion
 
 
