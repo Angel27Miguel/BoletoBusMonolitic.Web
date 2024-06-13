@@ -3,9 +3,9 @@
     "mssql1": {
       "serviceConnectorResourceId": "",
       "secretStore": "LocalSecretsFile",
-      "resourceId": null,
       "type": "mssql.local",
-      "connectionId": "ConnectionStrings:DBBoletoBus"
+      "connectionId": "ConnectionStrings:DBBoletoBusConnection",
+      "dynamicId": null
     }
   }
 }

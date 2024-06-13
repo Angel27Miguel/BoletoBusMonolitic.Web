@@ -19,9 +19,11 @@ namespace BoletoBusMonolitic.Web.Data.Context
             public DbSet<Reserva> Reserva { get; set; }
             public DbSet<ReservaDetalle> ReservaDetalle { get; set; }
             public DbSet<BoletoBusMonolitic.Web.Data.Models.EmpleadosModel> EmpleadosModel { get; set; } = default!;
-            #endregion
 
 
-    
+        #endregion
+
+
+
     }
-    }
+}
