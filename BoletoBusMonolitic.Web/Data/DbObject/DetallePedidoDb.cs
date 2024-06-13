@@ -29,7 +29,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
                 IdPedido = detallePedido.IdPedido,
                 IdPlato = detallePedido.IdPlato,
                 Cantidad = detallePedido.Cantidad,
-                Subtotal = detallePedido.Subtotal,
+                Subtotal = detallePedido.Subtotal
             };
         }
 
@@ -49,7 +49,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
                 IdPedido = cdp.IdPedido,
                 IdPlato = cdp.IdPedido,
                 Cantidad = cdp.Cantidad,
-                Subtotal = cdp.Subtotal,
+                Subtotal = cdp.Subtotal
             }).ToList();
         }
     }
