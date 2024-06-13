@@ -6,6 +6,9 @@ namespace BoletoBusMonolitic.Web.Data.Context
 {
     public class BoletoBusContext : DbContext
     {
+        public BoletoBusContext()
+        {
+        }
         #region "Constructor"
         public BoletoBusContext(DbContextOptions<BoletoBusContext> options) : base(options)
         {
