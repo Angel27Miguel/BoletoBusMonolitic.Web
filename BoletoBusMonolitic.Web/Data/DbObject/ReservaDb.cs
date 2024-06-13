@@ -1,7 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Exeptions;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject
@@ -9,13 +9,13 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class ReservaDb : IReserva
     {
         private readonly BoletoBusContext context;
-        private readonly ReservaException exception;
-        private Reserva reserva;
+        private readonly ReservaException exception1;
+       
 
-        public ReservaDb(BoletoBusContext context, ReservaException exception)
+        public ReservaDb(BoletoBusContext context, ReservaException exception1)
         {
             this.context = context;
-            this.exception = exception;
+            this.exception1 = exception1;
         }
         public void EditarReserva(ReservaEditarModel reservaEditar)
         {
@@ -66,7 +66,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
             ArgumentNullException.ThrowIfNull(reserva, "Reserva no encontrado");
 
-            ReservaModel reservaModel = new ReservaModel()
+            ReservaModel reservaModel = new ()
             {
                 IdReserva = reserva.IdReserva,
                 IdViaje = reserva.IdViaje,

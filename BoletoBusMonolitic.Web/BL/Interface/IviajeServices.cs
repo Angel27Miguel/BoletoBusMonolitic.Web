@@ -2,7 +2,7 @@
 
 namespace BoletoBusMonolitic.Web.BL.Interface
 {
-    public interface IviajeService
+    public interface IViajeService
     {
         List<ViajeModel> GetViajeModels();
     }

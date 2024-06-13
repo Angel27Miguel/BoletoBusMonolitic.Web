@@ -1,11 +1,11 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Models;
 
-namespace BoletoBusMonolitic.Web.Data.Interfaces
+namespace BoletoBusMonolitic.Web.Data.Entities
 {
     public interface IEmpleados
     {
-        List<EmpleadosModel> GetEmpleadosList();
+        List<EmpleadosModel> GetEmpleado();
 
         void GuardarEmpleado( EmpleadosGuardarModel empleadosGuardar);
 

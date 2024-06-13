@@ -1,11 +1,11 @@
 ﻿using BoletoBusMonolitic.Web.BL.Interface;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 
 namespace BoletoBusMonolitic.Web.BL.Services
 {
-    public class ViajeService : IviajeService
+    public class ViajeService : IViajeService
     {
         private readonly IViajeDb viaje;
 

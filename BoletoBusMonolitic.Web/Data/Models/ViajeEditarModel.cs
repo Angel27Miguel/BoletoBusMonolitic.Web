@@ -1,7 +1,11 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace BoletoBusMonolitic.Web.Data.Models
 {
     public class ViajeEditarModel
     {
+        
         public int IdViaje { get; set; }
         public int IdBus { get; set; }
         public string? Bus { get; set; }

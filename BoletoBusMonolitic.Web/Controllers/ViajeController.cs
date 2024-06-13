@@ -1,5 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

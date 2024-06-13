@@ -1,14 +1,19 @@
 ﻿using BoletoBusMonolitic.Web.Data.Core;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoletoBusMonolitic.Web.Data.Entites
 {
     public class Empleados : BaseEntity
     {
         //Atributos de la entidad 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EmpleadoId { get; set; }
 
-       public int IdEmpleado { get; set; }
         public string? Nombre { get; set; }
-        public string? Cargo { get; set; }
+        
+        public string? Cargo { get; set; } 
 
 
     }

@@ -1,7 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Exeptions;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject
@@ -24,7 +24,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 
             }
 
-           EmpleadoEdita.Nombre = empleadosEditar.Nombre;
+            EmpleadoEdita.Nombre = empleadosEditar.Nombre;
             EmpleadoEdita.Cargo = empleadosEditar.Cargo;
 
             this.context.Empleado.Update(EmpleadoEdita);
@@ -39,7 +39,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 exception.Error();
             }
 
-            empleadoMobelEliminar.IdEmpleado = empleadosEliminar.IdEmpleado;
+            empleadoMobelEliminar.EmpleadoId = empleadosEliminar.IdEmpleado;
 
             this.context.Remove(empleadoMobelEliminar);
             this.context.SaveChanges();
@@ -53,18 +53,18 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
             EmpleadosModel empleadosModel = new EmpleadosModel()
             {
-                IdEmpleado = empleados.IdEmpleado,
+                IdEmpleado = empleados.EmpleadoId,
                 Nombre = empleados.Nombre,
                 Cargo = empleados.Cargo
             };
             return empleadosModel;
         }
 
-        public List<EmpleadosModel> GetEmpleadosList()
+        public List<EmpleadosModel> GetEmpleado()
         {
             return this.context.Empleado.Select(cd => new EmpleadosModel()
             {
-              IdEmpleado = cd.IdEmpleado,
+              IdEmpleado = cd.EmpleadoId,
               Nombre = cd.Nombre,
               Cargo = cd.Cargo
 
@@ -73,7 +73,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         public void GuardarEmpleado(EmpleadosGuardarModel empleadosGuardar)
         {
-            Empleados empleados = new Empleados()
+            Empleados empleados = new ()
             {
 
                 Nombre = empleadosGuardar.Nombre,

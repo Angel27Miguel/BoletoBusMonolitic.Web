@@ -1,7 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Exeptions;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject

@@ -1,5 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.Core;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoletoBusMonolitic.Web.Data.Entites;
 
@@ -8,7 +10,8 @@ public class Viaje : BaseEntity
 {
 
     #region "Atributos"
-
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdViaje { get; set; }
     public int IdBus { get; set; }
     public int IdRuta { get; set; }
