@@ -41,7 +41,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
 
 
-            empleadoMobelEliminar.EmpleadoId = empleadosEliminar.IdEmpleado;
+            empleadoMobelEliminar.IdEmpleado = empleadosEliminar.IdEmpleado;
 
             this.context.Remove(empleadoMobelEliminar);
             this.context.SaveChanges();
@@ -55,7 +55,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
             EmpleadosModel empleadosModel = new EmpleadosModel()
             {
-                IdEmpleado = empleados.EmpleadoId,
+                IdEmpleado = empleados.IdEmpleado,
                 Nombre = empleados.Nombre,
                 Cargo = empleados.Cargo
             };
@@ -66,7 +66,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         {
             return this.context.Empleado.Select(cd => new EmpleadosModel()
             {
-              IdEmpleado = cd.EmpleadoId,
+              IdEmpleado = cd.IdEmpleado,
               Nombre = cd.Nombre,
               Cargo = cd.Cargo
 
