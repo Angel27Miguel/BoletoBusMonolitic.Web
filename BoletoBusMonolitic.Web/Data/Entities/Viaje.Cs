@@ -22,6 +22,8 @@ public class Viaje : BaseEntity
     public decimal Precio { get; set; }
     public int TotalAsientos { get; set; }
     public int AsientosReservados { get; set; }
+   
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public int AsientoDisponibles { get; set; }
     public DateTime FechaCreacion { get; set; }
 
