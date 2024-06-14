@@ -1,16 +1,16 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface ICliente
     {
-        List<Cliente> GetClienteList();
+        void GuardarCliente(ClienteSaveModel clienteModel);
+        void EliminarCliente(ClienteDeleteModel clienteDelete);
+        void ActualizarClientes(ClienteUpdateModel updateModel);
+        ClienteModel GetCliente(int IdCliente);
+        List<ClienteModel> GetCliente();
 
-        public void AgregarCliente();
-
-        public void EliminarCliente();
-
-        public void MostrarClientes();
     }
 }
 

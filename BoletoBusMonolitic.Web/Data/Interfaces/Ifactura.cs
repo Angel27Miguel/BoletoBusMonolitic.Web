@@ -1,17 +1,23 @@
 ﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IFactura
     {
-        List<Factura> GetFacturaList();
+        public interface IFacturaRepository
+        {
+            FacturaModel GetFactura(int IDFactura);
 
-        public void AgregarFactura();
+            List<FacturaModel> GetFacturas();
 
-        public void EliminarFactura();
+            void GuardarFactura(FacturaModel facturaModel);
 
-        public void MostrarFactura();
+            void EliminarFactura(int IDFactura);
+
+            void ActualizarFactura(FacturaModel facturaModel);
+        }
     }
-}
+    }
 
 /*Daniel Alexander Dominguez*/
