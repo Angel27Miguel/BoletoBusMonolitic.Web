@@ -19,6 +19,8 @@ namespace BoletoBusMonolitic.Web.Data.Context
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<DetallePedido> DetallePedido { get; set; }
         public DbSet<Menu> Menu { get; set; }
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoModel> PedidoModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoAddModel> PedidoAddModel { get; set; } = default!;
         #endregion
         
     }

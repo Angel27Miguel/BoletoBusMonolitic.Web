@@ -1,5 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,10 +36,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: PedidoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PedidoAddModel pedidoAdd )
         {
             try
             {
+                this.pedidoService.Agregar(pedidoAdd);
                 return RedirectToAction(nameof(Index));
             }
             catch
