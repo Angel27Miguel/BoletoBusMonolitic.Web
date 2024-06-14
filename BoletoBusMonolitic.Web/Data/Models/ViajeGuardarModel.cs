@@ -18,7 +18,6 @@ namespace BoletoBusMonolitic.Web.Data.Models
         public decimal Precio { get; set; }
         public int TotalAsientos { get; set; }
         public int AsientosReservados { get; set; }
-        public int AsientoDisponibles { get; set; }
         public DateTime FechaCreacion { get; set; }
 
 

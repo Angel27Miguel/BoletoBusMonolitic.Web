@@ -20,12 +20,11 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         }
         public void EditarViaje(ViajeEditarModel viajeEditar)
         {
-            var viajeEdita = this.context.Viaje.Find(viajeEditar);
+            var viajeEdita = this.context.Viaje.Find(viajeEditar.IdViaje);
             if (viajeEdita == null)
             {
                 throw new ArgumentException("Viaje no encontrado");
             }
-
 
             viajeEdita.IdBus = viajeEditar.IdBus;
             viajeEdita.IdRuta = viajeEditar.IdRuta;
@@ -34,13 +33,11 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             viajeEdita.FechaLlegada = viajeEditar.FechaLlegada;
             viajeEdita.HoraLlegada = viajeEditar.HoraLlegada;
             viajeEdita.Precio = viajeEditar.Precio;
-            viajeEdita.TotalAsientos = viajeEdita.TotalAsientos;
-            viajeEdita.AsientoDisponibles = viajeEdita.AsientoDisponibles;
-            viajeEdita.AsientosReservados = viajeEdita.AsientosReservados;
+            viajeEdita.TotalAsientos = viajeEditar.TotalAsientos;
+            viajeEdita.AsientosReservados = viajeEditar.AsientosReservados;
 
             this.context.Viaje.Update(viajeEdita);
             this.context.SaveChanges();
-
         }
 
         public void EliminarViaje(ViajeEliminarModel viajeEliminar)
@@ -111,7 +108,6 @@ namespace BoletoBusMonolitic.Web.Date.Daos
         {
             Viaje viaje = new Viaje()
             {
-
                 IdBus = viajeGuardar.IdBus,
                 IdRuta = viajeGuardar.IdRuta,
                 FechaSalida = viajeGuardar.FechaSalida,
@@ -120,14 +116,14 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 HoraLlegada = viajeGuardar.HoraLlegada,
                 Precio = viajeGuardar.Precio,
                 TotalAsientos = viajeGuardar.TotalAsientos,
-                AsientoDisponibles = viajeGuardar.AsientoDisponibles,
                 AsientosReservados = viajeGuardar.AsientosReservados,
                 FechaCreacion = viajeGuardar.FechaCreacion
-
             };
+
             this.context.Viaje.Add(viaje);
             this.context.SaveChanges();
-        }
+        
+         }
 
 
     }

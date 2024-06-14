@@ -45,6 +45,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                viajeGuardar.FechaCreacion = DateTime.Now;
                 this.viajeDb.GuardarViaje(viajeGuardar);
                 return RedirectToAction(nameof(Index));
             }
@@ -57,6 +58,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ViajeController1/Edit/5
         public ActionResult Edit(int id)
         {
+
             var viaje = this.viajeDb.GetViaje(id);
             return View(viaje);
         }
@@ -64,10 +66,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ViajeController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ViajeEditarModel viajeEditar)
+        public ActionResult Edit(ViajeEditarModel viajeEditar)
         {
             try
             {
+                viajeEditar.FechaCreacion = DateTime.Now;
                 this.viajeDb.EditarViaje(viajeEditar);
                 return RedirectToAction(nameof(Index));
             }

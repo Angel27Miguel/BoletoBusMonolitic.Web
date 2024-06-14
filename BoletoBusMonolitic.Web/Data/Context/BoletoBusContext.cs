@@ -23,6 +23,8 @@ namespace BoletoBusMonolitic.Web.Data.Context
             public DbSet<BoletoBusMonolitic.Web.Data.Models.EmpleadosEditarModel> EmpleadosEditarModel { get; set; } = default!;
             public DbSet<BoletoBusMonolitic.Web.Data.Models.ViajeModel> ViajeModel { get; set; } = default!;
             public DbSet<BoletoBusMonolitic.Web.Data.Models.ReservaModel> ReservaModel { get; set; } = default!;
+            public DbSet<BoletoBusMonolitic.Web.Data.Models.ViajeGuardarModel> ViajeGuardarModel { get; set; } = default!;
+            public DbSet<BoletoBusMonolitic.Web.Data.Models.ViajeEditarModel> ViajeEditarModel { get; set; } = default!;
 
 
         #endregion

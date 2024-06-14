@@ -45,8 +45,7 @@ namespace BoletoBusMonolitic.Web.Controllers
             try
             {
 
-                
-                empleados.GuardarEmpleado(empleadosGuardarModel);
+                this.empleados.GuardarEmpleado(empleadosGuardarModel);
                 return RedirectToAction(nameof(Index));
             }
             catch
