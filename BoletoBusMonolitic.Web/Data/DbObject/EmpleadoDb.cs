@@ -31,6 +31,8 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             this.context.SaveChanges();
         }
 
+        
+
         public void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar)
         {
             var empleadoMobelEliminar = this.context.Empleado.Find(empleadosEliminar.IdEmpleado);
@@ -45,6 +47,11 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
             this.context.Remove(empleadoMobelEliminar);
             this.context.SaveChanges();
+        }
+
+        public void EliminarEmpleados(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public EmpleadosModel GetEmpleado(int IdEmpleado)
@@ -62,7 +69,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             return empleadosModel;
         }
 
-        public List<EmpleadosModel> GetEmpleado()
+        public List<EmpleadosModel> GetEmpleados()
         {
             return this.context.Empleado.Select(cd => new EmpleadosModel()
             {

@@ -1,5 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,14 +20,15 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Index()
         {
 
-            var empleado = this.empleados.GetEmpleado();
+            var empleado = this.empleados.GetEmpleados();
             return View(empleado);
         }
 
         // GET: EmpleadosController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var empleado = this.empleados.GetEmpleado(id);
+            return View(empleado);
         }
 
         // GET: EmpleadosController/Create
@@ -38,10 +40,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: EmpleadosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(EmpleadosGuardarModel empleadosGuardar)
         {
             try
             {
+                
+                this.empleados.GuardarEmpleado(empleadosGuardar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -53,7 +57,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: EmpleadosController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var empleado = this.empleados.GetEmpleado(id);
+            return View(empleado);
         }
 
         // POST: EmpleadosController/Edit/5
@@ -63,6 +68,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+
                 return RedirectToAction(nameof(Index));
             }
             catch

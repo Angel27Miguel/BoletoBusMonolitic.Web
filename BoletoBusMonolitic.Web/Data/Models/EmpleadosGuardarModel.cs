@@ -7,6 +7,7 @@ namespace BoletoBusMonolitic.Web.Data.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdEmpleado { get; set; }
         public string? Nombre { get; set; }
         public string? Cargo { get; set; }
         }
