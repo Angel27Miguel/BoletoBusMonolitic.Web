@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="BL\Exeptions\" />
-    <Folder Include="Views\Viaje\" />
   </ItemGroup>
 
 </Project>

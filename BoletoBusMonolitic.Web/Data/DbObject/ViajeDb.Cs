@@ -68,7 +68,8 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
             ViajeModel viajeModel = new ViajeModel()
             {
-  
+
+                IdViaje = viaje.IdViaje,
                 IdBus = viaje.IdBus,
                 IdRuta = viaje.IdRuta,
                 FechaSalida = viaje.FechaSalida,
@@ -94,10 +95,13 @@ namespace BoletoBusMonolitic.Web.Date.Daos
                 IdBus = cd.IdBus,
                 IdRuta = cd.IdRuta,
                 FechaSalida = cd.FechaSalida,
+                HoraSalida= cd.HoraSalida,
                 FechaLlegada = cd.FechaSalida,
+                HoraLlegada= cd.HoraLlegada,
                 Precio = cd.Precio,
                 TotalAsientos = cd.TotalAsientos,
                 AsientoDisponibles = cd.AsientoDisponibles,
+                AsientosReservados= cd. AsientosReservados,
                 FechaCreacion = cd.FechaCreacion
 
               }).ToList();
