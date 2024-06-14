@@ -1,18 +1,34 @@
-using System.Runtime.InteropServices;
+using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 
-// En proyectos de estilo SDK como este, varios atributos de ensamblado que definían
-// en este archivo se agregan ahora automáticamente durante la compilación y se rellenan
-// con valores definidos en las propiedades del proyecto. Para obtener detalles acerca
-// de los atributos que se incluyen y cómo personalizar este proceso, consulte https://aka.ms/assembly-info-properties
+namespace BoletoBusMonolitic.Web.Data.DbObject
+{
+    public class MesaDb : IMesa
+    {
+        public void EliminarMesa(MesaDeleteModel mesaDelete)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Mesa GetMesa(int IDMesa)
+       {
+            throw new NotImplementedException();
+        }
 
-// Al establecer ComVisible en false, se consigue que los tipos de este ensamblado
-// no sean visibles para los componentes COM. Si tiene que acceder a un tipo en este
-// ensamblado desde COM, establezca el atributo ComVisible en true en ese tipo.
+        public List<Mesa> GetMesaList()
+        {
+            throw new NotImplementedException();
+        }
 
-[assembly: ComVisible(false)]
+        public void GuardarMesa(MesaSaveModel mesaSave)
+        {
+            throw new NotImplementedException();
+        }
 
-// El siguiente GUID es para el identificador de typelib, si este proyecto se expone
-// en COM.
-
-[assembly: Guid("de10c086-6fc8-43bd-9353-f705af6341b7")]
+        public void UpdateMesa(MesaUpdateModel mesaUpdate)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

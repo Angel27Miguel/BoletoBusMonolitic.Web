@@ -1,18 +1,85 @@
-using System.Runtime.InteropServices;
+using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 
-// En proyectos de estilo SDK como este, varios atributos de ensamblado que definían
-// en este archivo se agregan ahora automáticamente durante la compilación y se rellenan
-// con valores definidos en las propiedades del proyecto. Para obtener detalles acerca
-// de los atributos que se incluyen y cómo personalizar este proceso, consulte https://aka.ms/assembly-info-properties
+namespace BoletoBusMonolitic.Web.Data.DbObject
+{
+    public class FacturaDb : IFactura
+    {
+        private readonly BoletoBusContext context;
+        public void ActualizarFactura(FacturaUpdateModel facturaUpdate)
+        {
+            Factura FacturaUptade = this.context.Factura.Find(facturaUpdate.IDFactura);
 
+            FacturaUptade.IDFactura = facturaUpdate.IDFactura;
+            FacturaUptade.IDPedido = facturaUpdate.IDPedido;
+            FacturaUptade.Total = facturaUpdate.Total;
 
-// Al establecer ComVisible en false, se consigue que los tipos de este ensamblado
-// no sean visibles para los componentes COM. Si tiene que acceder a un tipo en este
-// ensamblado desde COM, establezca el atributo ComVisible en true en ese tipo.
+            this.context.Factura.Update(FacturaUptade);
+            this.context.SaveChanges();
+        }
 
-[assembly: ComVisible(false)]
+        public void EliminarFactura(FacturaDeleteModel facturaDelete)
+        {
+            var Facturaeliminarmodel = this.context.Factura.Find(facturaDelete.IdFactura);
+            if (facturaDelete == null)
+            {
 
-// El siguiente GUID es para el identificador de typelib, si este proyecto se expone
-// en COM.
+            }
 
-[assembly: Guid("37361b9f-fed0-4a87-b9ff-5c6ec2bc3e90")]
+            Facturaeliminarmodel.IDFactura = facturaDelete.IdFactura;
+
+            this.context.Remove(Facturaeliminarmodel);
+            this.context.SaveChanges();
+        }
+
+        public Factura GetFactura(int IDFactura)
+        {
+            var Factura = this.context.Factura.Find(IDFactura);
+            FacturaModel facturaModel = new FacturaModel()
+            {
+                IDFactura= Factura.IDFactura,
+                IDPedido= Factura.IDPedido,
+                Total=Factura.Total,    
+                Fecha=Factura.Fecha,
+            };
+
+            return Factura;
+
+         }
+
+        public List<FacturaModel> GetFactura()
+        {
+            return this.context.Factura.Select(Factura => new FacturaModel()
+            {
+                IDFactura = Factura.IDFactura,
+                IDPedido = Factura.IDPedido,
+                Total = Factura.Total,
+                Fecha = Factura.Fecha,
+
+            }).ToList();
+        }
+
+        public void GuardarFactura(FacturaSaveModel facturaSave)
+        {
+            {
+               Factura factura= new Factura()
+                {
+                   IDFactura = facturaSave.IDFactura,
+                   IDPedido = facturaSave.IDPedido,
+                   Total = facturaSave.Total,
+                   Fecha = facturaSave.Fecha
+
+               };
+                this.context.Factura.Add(factura);
+                this.context.SaveChanges();
+
+            }
+        }
+
+       
+    }
+
+       
+}

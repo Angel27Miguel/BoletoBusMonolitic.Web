@@ -1,18 +1,99 @@
-using System.Runtime.InteropServices;
+using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
-// En proyectos de estilo SDK como este, varios atributos de ensamblado que definían
-// en este archivo se agregan ahora automáticamente durante la compilación y se rellenan
-// con valores definidos en las propiedades del proyecto. Para obtener detalles acerca
-// de los atributos que se incluyen y cómo personalizar este proceso, consulte https://aka.ms/assembly-info-properties
 
 
-// Al establecer ComVisible en false, se consigue que los tipos de este ensamblado
-// no sean visibles para los componentes COM. Si tiene que acceder a un tipo en este
-// ensamblado desde COM, establezca el atributo ComVisible en true en ese tipo.
+namespace BoletoBusMonolitic.Web.Data.DbObject
+{
+    public class ClienteDb : ICliente
+    {
+        private readonly BoletoBusContext context;
+        
 
-[assembly: ComVisible(false)]
 
-// El siguiente GUID es para el identificador de typelib, si este proyecto se expone
-// en COM.
+        public ClienteDb(BoletoBusContext context)
+        {
+            this.context = context;
+        }
 
-[assembly: Guid("236f0afc-15d8-4c5c-858b-695cafbf0a21")]
+        public void GuardarCliente(ClienteSaveModel clienteModel)
+                {
+                 Cliente cliente = new Cliente() {
+
+                 Nombre = clienteModel.Nombre,
+                 Telefono = clienteModel.Telefono,
+                 Correo= clienteModel.Email,
+
+                };
+               this.context.Cliente.Add(cliente);
+               this.context.SaveChanges();
+
+        }
+        public void ActualizarClientes(ClienteUpdateModel updateModel)
+        {
+            Cliente clientetouptade = this.context.Cliente.Find(updateModel.ClienteID);
+
+            clientetouptade.Nombre = updateModel.Nombre;
+            clientetouptade.Telefono = updateModel.Telefono;
+            clientetouptade.Correo = updateModel.Email;
+
+            this.context.Cliente.Update(clientetouptade);
+            this.context.SaveChanges();
+
+        }
+
+        public void EliminarCliente(ClienteDeleteModel clienteDelete)
+        {
+            var clienteModelEliminar = this.context.Cliente.Find(clienteDelete.IdCliente);
+            if (clienteDelete == null)
+            {
+              
+            }
+
+            clienteModelEliminar.IdCliente = clienteDelete.IdCliente;
+
+            this.context.Remove(clienteModelEliminar);
+            this.context.SaveChanges();
+        }
+
+
+        public List<ClienteModel> GetCliente()
+        {
+            return this.context.Cliente.Select(cliente => new ClienteModel()
+            {
+                Nombre = cliente.Nombre,
+                Telefono = cliente.Telefono,
+                Correo = cliente.Correo,
+
+            }).ToList();
+        }
+
+        public ClienteModel GetCliente(int IdCliente)
+        { 
+
+         var cliente = this.context.Cliente.Find(IdCliente);
+
+                ClienteModel clienteModel = new ClienteModel()
+                {
+                    Nombre = cliente.Nombre,
+                    Telefono = cliente.Telefono,
+                    Correo = cliente.Correo,
+                };
+              
+                return clienteModel;
+
+            }
+
+        }
+    }
+
+       
+
+        
+    
