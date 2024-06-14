@@ -1,5 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ViajeController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var viaje = this.viajeDb.GetViaje(id);
+            return View(viaje);
         }
 
         // GET: ViajeController1/Create
@@ -39,10 +41,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ViajeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ViajeGuardarModel viajeGuardar)
         {
             try
             {
+                this.viajeDb.GuardarViaje(viajeGuardar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,16 +57,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ViajeController1/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var viaje = this.viajeDb.GetViaje(id);
+            return View(viaje);
         }
 
         // POST: ViajeController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ViajeEditarModel viajeEditar)
         {
             try
             {
+                this.viajeDb.EditarViaje(viajeEditar);
                 return RedirectToAction(nameof(Index));
             }
             catch

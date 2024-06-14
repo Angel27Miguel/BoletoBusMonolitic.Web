@@ -29,12 +29,14 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
             viajeEdita.IdBus = viajeEditar.IdBus;
             viajeEdita.IdRuta = viajeEditar.IdRuta;
-            viajeEdita.IdPasajero = viajeEditar.IdPasajero;
             viajeEdita.FechaSalida = viajeEditar.FechaSalida;
             viajeEdita.HoraSalida = viajeEditar.HoraSalida;
             viajeEdita.FechaLlegada = viajeEditar.FechaLlegada;
             viajeEdita.HoraLlegada = viajeEditar.HoraLlegada;
             viajeEdita.Precio = viajeEditar.Precio;
+            viajeEdita.TotalAsientos = viajeEdita.TotalAsientos;
+            viajeEdita.AsientoDisponibles = viajeEdita.AsientoDisponibles;
+            viajeEdita.AsientosReservados = viajeEdita.AsientosReservados;
 
             this.context.Viaje.Update(viajeEdita);
             this.context.SaveChanges();
@@ -69,14 +71,14 @@ namespace BoletoBusMonolitic.Web.Date.Daos
   
                 IdBus = viaje.IdBus,
                 IdRuta = viaje.IdRuta,
-                IdPasajero = viaje.IdPasajero,
                 FechaSalida = viaje.FechaSalida,
                 HoraSalida = viaje.HoraSalida,
                 FechaLlegada = viaje.FechaLlegada,
                 HoraLlegada = viaje.HoraLlegada,
                 Precio = viaje.Precio,
-                TotalAsiento = viaje.TotalAsiento,
-                AsientosDisponibles = viaje.AsientosDisponibles,
+                TotalAsientos = viaje.TotalAsientos,
+                AsientosReservados = viaje.AsientosReservados,
+                AsientoDisponibles = viaje.AsientoDisponibles,
                 FechaCreacion = viaje.FechaCreacion
             };
 
@@ -90,13 +92,12 @@ namespace BoletoBusMonolitic.Web.Date.Daos
             {
                 IdViaje = cd.IdViaje,
                 IdBus = cd.IdBus,
-                IdPasajero = cd.IdPasajero,
                 IdRuta = cd.IdRuta,
                 FechaSalida = cd.FechaSalida,
                 FechaLlegada = cd.FechaSalida,
                 Precio = cd.Precio,
-                TotalAsiento = cd.TotalAsiento,
-                AsientosDisponibles = cd.AsientosDisponibles,
+                TotalAsientos = cd.TotalAsientos,
+                AsientoDisponibles = cd.AsientoDisponibles,
                 FechaCreacion = cd.FechaCreacion
 
               }).ToList();
@@ -109,12 +110,15 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
                 IdBus = viajeGuardar.IdBus,
                 IdRuta = viajeGuardar.IdRuta,
-                IdPasajero = viajeGuardar.IdPasajero,
                 FechaSalida = viajeGuardar.FechaSalida,
                 HoraSalida = viajeGuardar.HoraSalida,
                 FechaLlegada = viajeGuardar.FechaLlegada,
                 HoraLlegada = viajeGuardar.HoraLlegada,
                 Precio = viajeGuardar.Precio,
+                TotalAsientos = viajeGuardar.TotalAsientos,
+                AsientoDisponibles = viajeGuardar.AsientoDisponibles,
+                AsientosReservados = viajeGuardar.AsientosReservados,
+                FechaCreacion = viajeGuardar.FechaCreacion
 
             };
             this.context.Viaje.Add(viaje);
