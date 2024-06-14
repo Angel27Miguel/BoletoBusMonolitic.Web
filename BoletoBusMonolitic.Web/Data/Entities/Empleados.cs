@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BoletoBusMonolitic.Web.Data.Entites
 {
-    public class Empleados : BaseEntity
+    public class Empleados 
     {
         //Atributos de la entidad 
         [Key]

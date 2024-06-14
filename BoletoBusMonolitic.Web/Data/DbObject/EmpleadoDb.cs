@@ -18,20 +18,21 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         }
         public void EditarEmpleados(EmpleadosEditarModel empleadosEditar)
         {
-            var EmpleadoEdita = this.context.Empleado.Find(empleadosEditar);
-            if (EmpleadoEdita == null)
+            var empleado = this.context.Empleado.Find(empleadosEditar.IdEmpleado); // Buscar por Id
+
+            if (empleado == null)
             {
                 throw new ArgumentException("Empleado no encontrado");
             }
 
-            EmpleadoEdita.Nombre = empleadosEditar.Nombre;
-            EmpleadoEdita.Cargo = empleadosEditar.Cargo;
+            empleado.Nombre = empleadosEditar.Nombre;
+            empleado.Cargo = empleadosEditar.Cargo;
 
-            this.context.Empleado.Update(EmpleadoEdita);
+            this.context.Empleado.Update(empleado);
             this.context.SaveChanges();
         }
 
-        
+
 
         public void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar)
         {

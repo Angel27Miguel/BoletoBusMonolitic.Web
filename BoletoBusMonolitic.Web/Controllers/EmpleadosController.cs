@@ -40,12 +40,13 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: EmpleadosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EmpleadosGuardarModel empleadosGuardar)
+        public ActionResult Create(EmpleadosGuardarModel empleadosGuardarModel)
         {
             try
             {
+
                 
-                this.empleados.GuardarEmpleado(empleadosGuardar);
+                empleados.GuardarEmpleado(empleadosGuardarModel);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -64,11 +65,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: EmpleadosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(EmpleadosEditarModel empleadosEditar)
         {
             try
             {
 
+                this.empleados.EditarEmpleados(empleadosEditar);
                 return RedirectToAction(nameof(Index));
             }
             catch
