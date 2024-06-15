@@ -1,14 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class ReservaDetalleModel
+    public class ReservaDetalleModelGuardar
     {
         [Key]
-        
+
         public int IdReservaDetalle { get; set; }
-        public int IdReserva {  get; set; }
+        public int IdReserva { get; set; }
         public int IdAsiento { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -16,4 +15,3 @@ namespace BoletoBusMonolitic.Web.Data.Models
         public DateTime FechaCreacion { get; set; }
     }
 }
-//Angel Miguel de la Rosa

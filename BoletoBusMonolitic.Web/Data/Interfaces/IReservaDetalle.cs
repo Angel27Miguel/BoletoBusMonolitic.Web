@@ -8,6 +8,10 @@ namespace BoletoBusMonolitic.Web.Data.Entities
         List<ReservaDetalleModel> GetReservaDetalleList();
 
         ReservaDetalleModel GetReservaDetalleModel(int IdReservaDetalle);
+
+        void GuardarReservaDetalle(ReservaDetalleModelGuardar reservaGuardar);
+
+        void EditarReservaDetalle(ReservaDetalleModelEdit reservaEditar);
     }
 }
 //Angel Miguel de la Rosa

@@ -1,5 +1,7 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaDetalleController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var reserva = this.reservaDetalleDb.GetReservaDetalleModel(id);
+            return View(reserva);
         }
 
         // GET: ReservaDetalleController/Create
@@ -36,10 +39,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ReservaDetalleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ReservaDetalleModelGuardar reservaDetalle)
         {
             try
             {
+                reservaDetalle.FechaCreacion = DateTime.Now;
+                this.reservaDetalleDb.GuardarReservaDetalle(reservaDetalle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -51,18 +56,21 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaDetalleController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
-        }
+			var reserva = this.reservaDetalleDb.GetReservaDetalleModel(id);
+			return View(reserva);
+		}
 
         // POST: ReservaDetalleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ReservaDetalleModelEdit reservaEditar)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
+				reservaEditar.FechaCreacion = DateTime.Now;
+				this.reservaDetalleDb.EditarReservaDetalle(reservaEditar);
+				return RedirectToAction(nameof(Index));
+			}
             catch
             {
                 return View();
