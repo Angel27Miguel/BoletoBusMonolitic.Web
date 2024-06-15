@@ -25,7 +25,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var reserva = this.reservaDb.GetReservaModel(id);
+            return View(reserva);
         }
 
         // GET: ReservaController/Create
@@ -54,7 +55,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var reserva = this.reservaDb.GetReservaModel(id);
+            return View(reserva);
         }
 
         // POST: ReservaController/Edit/5

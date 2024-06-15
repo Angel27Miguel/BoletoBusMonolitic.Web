@@ -1,0 +1,47 @@
+﻿@model BoletoBusMonolitic.Web.Data.Models.ReservaModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details Reserva</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdViaje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdViaje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPasajero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdPasajero)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AsientosReservados)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AsientosReservados)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdReserva">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

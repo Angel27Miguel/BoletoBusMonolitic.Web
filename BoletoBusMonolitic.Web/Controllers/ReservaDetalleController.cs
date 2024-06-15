@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +8,9 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ReservaDetalleController : Controller
     {
-        private readonly ReservaDetalleDb reservaDetalleDb;
+        private readonly IReservaDetalle reservaDetalleDb;
 
-        public ReservaDetalleController(ReservaDetalleDb reservaDetalleDb)
+        public ReservaDetalleController(IReservaDetalle reservaDetalleDb)
         {
             this.reservaDetalleDb = reservaDetalleDb;
         }
