@@ -13,9 +13,6 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private string TipoUsuario;
         private DateTime fechaCreacion;
 
-        public Usuario(int id) : base(id)
-        {
-
-        }
+        
     }
 }

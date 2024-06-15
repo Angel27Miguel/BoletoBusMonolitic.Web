@@ -5,17 +5,16 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     public class Bus : BaseEntity
     {
         //atributos
-        private int idAsiento;
-        private int numeroPlaca;
-        private string nombre;
-        private string capacidadPiso1;
-        private string capacidadPiso2;
-        private string capacidadtTotal;
-        private Boolean disponible;
-        private DateTime fechaCreacion;
+        public int IdBus { get; set; }
+        public int IdAsiento { get; set; }
+        public int NumeroPlaca { get; set; }
+        public string Nombre { get; set; }
+        public int CapacidadPiso1 { get; set; }
+        public int CapacidadPiso2 { get; set; }
+        public int CapacidadTotal { get; set; }
+        public bool Disponible { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
-        public Bus(int id) : base(id)
-        {
-        }
+
     }
 }

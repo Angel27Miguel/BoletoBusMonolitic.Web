@@ -5,10 +5,10 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IBus
     {
-        List<BusModel> GetBusModels();
+        List<BusModel> GetBusList();
 
         BusModel GetBusModel(int idBus);
-        public void AgregarBus(BusGuardarModel busGuardar);
+        public void GuardarBus(BusGuardarModel busGuardar);
 
         public void EliminarBus(BusEliminarModel busEliminar);
 

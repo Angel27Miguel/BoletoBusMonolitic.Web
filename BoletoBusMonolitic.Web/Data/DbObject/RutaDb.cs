@@ -20,17 +20,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         public void EditarRuta(RutaEditarModel rutaEditar)
         {
-            var RutaEdita = this.context.Ruta.Find();
-            if (RutaEdita == null)
-            {
-
-            }
-
-            RutaEdita.Nombre = RutaEditar.Nombre;
-            RutaEdita.Cargo = Editar.Cargo;
-
-            this.context.Empleado.Update(EmpleadoEdita);
-            this.context.SaveChanges();
+          
         }
 
         public void EliminarRuta(RutaEliminarModel rutaEliminar)

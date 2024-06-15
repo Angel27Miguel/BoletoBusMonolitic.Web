@@ -2,7 +2,7 @@
 {
     public class BusGuardarModel
     {
-        public string NumeroPlaca { get; set; } 
+        public int NumeroPlaca { get; set; } 
 
         public string Nombre { get; set; } 
 

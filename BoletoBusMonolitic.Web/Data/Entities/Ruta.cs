@@ -8,8 +8,6 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         private string origen;
         private string destino;
         private string FechaCreacion;
-        public Ruta(int id) : base(id)
-        {
-        }
+       
     }
 }
