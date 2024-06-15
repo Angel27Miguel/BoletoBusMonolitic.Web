@@ -8,8 +8,7 @@ namespace BoletoBusMonolitic.Web.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdReserva { get; set; }
-        public int IdPasajero { get; set; }
-        public string? Psajero { get; set; }
+       
        
     }
 }

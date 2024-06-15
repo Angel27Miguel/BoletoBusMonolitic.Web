@@ -25,7 +25,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
            editarReserva.IdViaje = reservaEditar.IdViaje;
             editarReserva.IdReserva = reservaEditar.IdReserva;
             editarReserva.IdPasajero = reservaEditar.IdPasajero;
-            editarReserva.AsientoReservado = reservaEditar.AsientoReservado;
+            editarReserva.AsientosReservados = reservaEditar.AsientosReservados;
             editarReserva.MontoTotal = reservaEditar.MontoTotal;
 
             this.context.Update(editarReserva);
@@ -41,7 +41,6 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             }
 
             eliminarReserva.IdReserva = reservaEliminar.IdReserva;
-            eliminarReserva.IdPasajero = reservaEliminar.IdPasajero;
             
 
             this.context.Update(eliminarReserva);
@@ -54,8 +53,8 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             {
                 IdReserva = cd.IdReserva,
                 IdViaje = cd.IdViaje,
-                IdPasajero = cd.IdPasajero,
-                AsientoReservado = cd.AsientoReservado,
+                IdPasajero= cd.IdPasajero,
+                AsientosReservados = cd.AsientosReservados,
                 MontoTotal = cd.MontoTotal,
                 FechaCreacion = cd.FechaCreacion
 
@@ -73,7 +72,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 IdReserva = reserva.IdReserva,
                 IdViaje = reserva.IdViaje,
                 IdPasajero = reserva.IdPasajero,
-                AsientoReservado= reserva.AsientoReservado,
+                AsientosReservados= reserva.AsientosReservados,
                 MontoTotal = reserva.MontoTotal,
                 FechaCreacion = reserva.FechaCreacion
                 
@@ -87,8 +86,10 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
                 IdViaje = reservaGuardar.IdViaje,
                 IdPasajero = reservaGuardar.IdPasajero,
-                AsientoReservado = reservaGuardar.AsientoReservado,
-                MontoTotal = reservaGuardar.MontoTotal
+                AsientosReservados = reservaGuardar.AsientosReservados,
+                MontoTotal = reservaGuardar.MontoTotal,
+                FechaCreacion = reservaGuardar.FechaCreacion
+               
 
              };
             this.context.Add(reserva);

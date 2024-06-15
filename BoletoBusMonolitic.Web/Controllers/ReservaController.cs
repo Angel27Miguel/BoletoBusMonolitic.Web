@@ -1,4 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
+using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,16 +9,17 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ReservaController : Controller
     {
-        private readonly ReservaDb reservaDb;
+        private readonly IReserva reservaDb;
 
-        public ReservaController(ReservaDb reservaDb)
+        public ReservaController(IReserva reservaDb)
         {
             this.reservaDb = reservaDb;
         }
         // GET: ReservaController
         public ActionResult Index()
         {
-            return View();
+            var reserva = this.reservaDb.GetReservaList();
+            return View(reserva);
         }
 
         // GET: ReservaController/Details/5
@@ -34,10 +37,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ReservaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ReservaGuardarModel reservaGuardar)
         {
             try
             {
+                reservaGuardar.FechaCreacion = DateTime.Now;
+                this.reservaDb.GuardarReserva(reservaGuardar);
                 return RedirectToAction(nameof(Index));
             }
             catch

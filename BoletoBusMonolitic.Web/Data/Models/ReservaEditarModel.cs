@@ -10,9 +10,9 @@ namespace BoletoBusMonolitic.Web.Data.Models
         public int IdReserva { get; set; }
         public int IdViaje { get; set; }
         public int IdPasajero { get; set; }
-        public int AsientoReservado { get; set; }
-        public double MontoTotal { get; set; }
-        public DateTime FechaEdicion { get; set; }
+        public int AsientosReservados { get; set; }
+        public decimal MontoTotal { get; set; }
+        public DateTime FechaCreacion { get; set; }
     }
 }
 //Angel Miguel de la Rosa
