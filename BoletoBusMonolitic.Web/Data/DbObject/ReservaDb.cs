@@ -17,7 +17,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         }
         public void EditarReserva(ReservaEditarModel reservaEditar)
         {
-            var editarReserva = this.context.Reserva.Find(reservaEditar);
+            var editarReserva = this.context.Reserva.Find(reservaEditar.IdReserva);
             if (editarReserva == null) {
                 throw new ArgumentException("Reserva no encontrado");
             }
@@ -33,17 +33,17 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         }
 
+       
+
         public void EliminarReserva(ReservaEliminarModel reservaEliminar)
         {
-            var eliminarReserva = this.context.Reserva.Find(reservaEliminar);
-            if (eliminarReserva == null) {
-                throw new ArgumentException("Reserva no encontrado");
+            var eliminarReserva = this.context.Reserva.Find(reservaEliminar.IdReserva);
+            if (eliminarReserva == null)
+            {
+                throw new ArgumentException("Reserva no encontrada");
             }
 
-            eliminarReserva.IdReserva = reservaEliminar.IdReserva;
-            
-
-            this.context.Update(eliminarReserva);
+            this.context.Reserva.Remove(eliminarReserva);
             this.context.SaveChanges();
         }
 

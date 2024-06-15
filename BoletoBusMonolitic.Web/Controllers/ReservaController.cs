@@ -62,10 +62,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ReservaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ReservaEditarModel reservaEditar)
         {
             try
             {
+                reservaEditar.FechaCreacion = DateTime.Now;
+                this.reservaDb.EditarReserva(reservaEditar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,16 +79,35 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var reserva = this.reservaDb.GetReservaModel(id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            ReservaEliminarModel eliminarModel = new ReservaEliminarModel
+            {
+                IdReserva = reserva.IdReserva,
+                IdViaje = reserva.IdViaje,
+                IdPasajero = reserva.IdPasajero,
+                AsientosReservados = reserva.AsientosReservados,
+                MontoTotal = reserva.MontoTotal,
+                FechaCreacion = reserva.FechaCreacion
+            };
+
+            return View(eliminarModel);
         }
 
         // POST: ReservaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteConfirmed(ReservaEliminarModel reservaEliminar)
         {
             try
             {
+                
+
+                this.reservaDb.EliminarReserva(reservaEliminar);
                 return RedirectToAction(nameof(Index));
             }
             catch
