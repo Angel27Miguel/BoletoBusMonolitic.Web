@@ -1,4 +1,4 @@
-﻿using BoletoBusMonolitic.Web.Data.Entities;
+﻿
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Data.Context;
@@ -13,29 +13,88 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         private readonly BoletoBusContext context;
         private readonly RutaException exception;
 
-        public void AgregarRuta(RutaAgregarModel rutaAgregar)
+        public void GuardarRuta(RutaGuardarModel rutaGuardar)
         {
-            throw new NotImplementedException();
+            Ruta ruta = new Ruta() { 
+
+                Origen = rutaGuardar.Origen,
+                Destino = rutaGuardar.Destino,
+                FechaCreacion = rutaGuardar.FechaCreacion,
+
+            
+            };
+
+            this.context.Ruta.Add(ruta);
+            this.context.SaveChanges();
+
+
         }
 
         public void EditarRuta(RutaEditarModel rutaEditar)
         {
+            var ruta = this.context.Ruta.Find(rutaEditar.IdRuta);
+
+            if (ruta == null)
+            {
+                throw new ArgumentNullException("Ruta no encontarda");   
+            }
+
+            ruta.IdRuta = rutaEditar.IdRuta;
+            ruta.Origen = rutaEditar.Origen;
+            ruta.Destino = rutaEditar.Destino;
+            ruta.FechaCreacion = (DateTime)rutaEditar.FechaCreacion;
+
+            this.context.Ruta.Update(ruta);
+            this.context.SaveChanges();
+
+
           
         }
 
         public void EliminarRuta(RutaEliminarModel rutaEliminar)
         {
-            throw new NotImplementedException();
+            var rutaModelEliminar = this.context.Ruta.Find(rutaEliminar.IdRuta);
+            if (rutaModelEliminar == null)
+            { 
+                    throw new ArgumentNullException("Ruta no encontrada");
+            }
+            rutaModelEliminar.IdRuta = rutaEliminar.IdRuta;
+            this.context.Remove(rutaModelEliminar);
+            this.context.SaveChanges();
         }
 
         public RutaModel GetRutaModel(int idRuta)
         {
-            throw new NotImplementedException();
+            var ruta = this.context.Ruta.Find(idRuta);
+
+            if (ruta == null) 
+            {
+                throw new ArgumentNullException("Esta ruta no se encuentra");
+            }
+
+            return new RutaModel
+            { 
+                IdRuta = ruta.IdRuta,
+                Origen = ruta.Origen,
+                Destino = ruta.Destino,
+                FechaCreacion = ruta.FechaCreacion,
+
+            };
         }
 
-        public List<RutaModel> GetRutaModels()
+        public List<RutaModel> GetRutaList()
         {
-            throw new NotImplementedException();
+            return this.context.Ruta.Select(rut => new RutaModel()
+            { 
+                IdRuta = rut.IdRuta,
+                Origen = rut.Origen,
+                Destino = rut.Destino,  
+                FechaCreacion = rut.FechaCreacion,
+            
+            
+            
+            }).ToList();
+
         }
     }
 }

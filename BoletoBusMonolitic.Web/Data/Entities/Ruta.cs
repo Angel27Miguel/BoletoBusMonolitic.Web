@@ -5,9 +5,10 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     public class Ruta : BaseEntity
     {
         //atributos
-        private string origen;
-        private string destino;
-        private string FechaCreacion;
-       
+        public int IdRuta { get; set; } 
+        public string Origen { get; set; }
+        public string Destino { get; set; }
+        public DateTime FechaCreacion { get; set; }
+
     }
 }

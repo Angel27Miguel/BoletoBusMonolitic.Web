@@ -1,7 +1,6 @@
 
 using BoletoBusMonolitic.Web.Data.Context;
-
-using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

@@ -5,11 +5,11 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IRuta
     {
-        List<RutaModel> GetRutaModels();
+        List<RutaModel> GetRutaList();
 
         RutaModel GetRutaModel(int idRuta);
 
-        public void AgregarRuta(RutaAgregarModel rutaAgregar);
+        public void GuardarRuta(RutaGuardarModel rutaAgregar);
 
         public void EliminarRuta(RutaEliminarModel rutaEliminar);
 
