@@ -1,5 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.Context;
-using BoletoBusMonolitic.Web.Data.Interfaces;
+﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +23,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: PedidoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var pedido = this.pedidoService.GetPedidoModel(id);
+            return View(pedido);
         }
 
         // GET: PedidoController/Create
@@ -35,10 +36,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: PedidoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PedidoAgregarModel pedidoAdd)
         {
             try
             {
+                this.pedidoService.Agregar(pedidoAdd);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -50,16 +52,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: PedidoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var pedido = this.pedidoService.GetPedidoModel(id);
+            return View(pedido);
         }
 
         // POST: PedidoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(PedidoActualizarModel pedidoActualizar)
         {
             try
             {
+                this.pedidoService.Actualizar(pedidoActualizar);
                 return RedirectToAction(nameof(Index));
             }
             catch

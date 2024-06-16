@@ -6,8 +6,9 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         DetallePedidoModel GetDetallePedidoModel(int idDetallePedido);
         List<DetallePedidoModel> GetDetallePedidos();
-        void Mostrar(DetallePedidoReadModel detallePedidoRead);
-
+        void Eliminar(DetallePedidoEliminarModel detallePedidoEliminar);
+        void Agregar(DetallePedidoAgregarModel detallePedidoAgregar);
+        void Actualizar(DetallePedidoActualizarModel detallePedidoActualizar);
     }
    
 }

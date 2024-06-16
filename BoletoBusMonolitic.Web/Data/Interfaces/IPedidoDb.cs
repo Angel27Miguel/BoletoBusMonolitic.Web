@@ -6,9 +6,9 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<PedidoModel> GetPedidos();
         PedidoModel GetPedidoModel(int idPedido);
-        public void Actualizar(PedidoUpdateModel pedidoUpdate);
-        public void Eliminar(PedidoRemoveModel pedidoRemove);
-        public void Agregar(PedidoAddModel pedidoAdd);   
+        public void Eliminar(PedidoEliminarModel pedidoEliminar);
+        public void Agregar(PedidoAgregarModel pedidoAgregar);
+        public void Actualizar(PedidoActualizarModel pedidoActualizar  );
     }
 }
 //Ismael Garcia
