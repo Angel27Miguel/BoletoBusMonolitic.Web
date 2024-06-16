@@ -13,7 +13,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
         {
             this.context = context;
         }
-        public void Actualizar(PedidoUpdateModel pedidoUpdate)
+        public void Actualizar(PedidoActualizarModel pedidoUpdate)
         {
             var pedido = this.context.Pedido.Find(pedidoUpdate.IdPedido);
             if (pedido == null)
@@ -30,7 +30,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context.SaveChanges();
         }
 
-        public void Agregar(PedidoAddModel pedidoAdd)
+        public void Agregar(PedidoAgregarModel pedidoAdd)
         {
             Pedido pedido = new Pedido()
             {
@@ -44,7 +44,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context.SaveChanges();
         }
 
-        public void Eliminar(PedidoRemoveModel pedidoRemove)
+        public void Eliminar(PedidoEliminarModel pedidoRemove)
         {
             var pedido = this.context.Pedido.Find(pedidoRemove.IdPedido);
             if (pedido == null)

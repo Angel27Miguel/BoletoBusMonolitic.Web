@@ -1,5 +1,8 @@
-﻿using BoletoBusMonolitic.Web.Data.Context;
+﻿using BoletoBusMonolitic.Web.BL.Exeptions;
+using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.Daos;
 using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +11,7 @@ namespace BoletoBusMonolitic.Web.Controllers
     public class DetallePedidoController : Controller
     {
         private readonly IDetallePedidoDb detallePedidoService;
+        
 
         public DetallePedidoController(IDetallePedidoDb detallePedidoDb)
         {
@@ -21,6 +25,14 @@ namespace BoletoBusMonolitic.Web.Controllers
             return View(DetallePedido);
         }
 
+        // GET: DetallePedidoController/Details
+        public ActionResult Details(int id)
+        {
+            var detallePedido = this.detallePedidoService.GetDetallePedidoModel(id);
+            return View();
+        }
+
+
         // GET: DetallePedidoController/Create
         public ActionResult Create()
         {
@@ -30,10 +42,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: DetallePedidoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DetallePedidoAgregarModel detallePedidoAgregar)
         {
             try
             {
+                this.detallePedidoService.Agregar(detallePedidoAgregar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -45,16 +58,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: DetallePedidoController/Edit/5
         public ActionResult Edit(int id)
         {
+            var detallePedido = this.detallePedidoService.GetDetallePedidoModel(id);
             return View();
         }
 
         // POST: DetallePedidoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(DetallePedidoActualizarModel detallePedidoActualizar)
         {
             try
             {
+                this.detallePedidoService.Equals(detallePedidoActualizar);
                 return RedirectToAction(nameof(Index));
             }
             catch

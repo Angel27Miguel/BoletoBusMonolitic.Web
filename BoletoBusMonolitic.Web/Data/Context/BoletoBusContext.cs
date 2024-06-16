@@ -20,7 +20,14 @@ namespace BoletoBusMonolitic.Web.Data.Context
         public DbSet<DetallePedido> DetallePedido { get; set; }
         public DbSet<Menu> Menu { get; set; }
         public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoModel> PedidoModel { get; set; } = default!;
-        public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoAddModel> PedidoAddModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoAgregarModel> PedidoAddModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.PedidoActualizarModel> PedidoUpdateModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.MenuModel> MenuModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.MenuAgregarModel> MenuAgregarModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.MenuActualizarModel> MenuActualizarModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.DetallePedidoModel> DetallePedidoModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.DetallePedidoAgregarModel> DetallePedidoAgregarModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.DetallePedidoActualizarModel> DetallePedidoActualizarModel { get; set; } = default!;
         #endregion
         
     }

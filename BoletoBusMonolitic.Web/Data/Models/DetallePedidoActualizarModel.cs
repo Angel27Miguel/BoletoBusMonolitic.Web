@@ -1,9 +1,8 @@
-﻿using BoletoBusMonolitic.Web.Data.Core;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BoletoBusMonolitic.Web.Data.Entities
+namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class DetallePedido : BaseEntity
+    public class DetallePedidoActualizarModel
     {
         [Key]
         public int IdDetallePedido { get; set; }
@@ -13,4 +12,4 @@ namespace BoletoBusMonolitic.Web.Data.Entities
         public decimal Subtotal { get; set; }
     }
 }
-//Ismael Garcia
+

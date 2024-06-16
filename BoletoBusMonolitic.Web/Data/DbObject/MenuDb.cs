@@ -14,7 +14,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context = context;
         }
 
-        public void Actualizar(MenuUpdateModel menuUpdate)
+        public void Actualizar(MenuActualizarModel menuUpdate)
         {
             var menu = this.context.Menu.Find(menuUpdate.IdPlato);
             if (menu == null)
@@ -31,7 +31,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context.SaveChanges();
         }
 
-        public void Agregar(MenuAddModel menuAdd)
+        public void Agregar(MenuAgregarModel menuAdd)
         {
             Menu menu = new Menu()
             {
@@ -45,7 +45,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context.SaveChanges();
         }
 
-        public void Eliminar(MenuRemoveModel menuRemove)
+        public void Eliminar(MenuEliminarModel menuRemove)
         {
             var menu = this.context.Menu.Find(menuRemove.IdPlato);
             if (menu == null)

@@ -6,8 +6,8 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<MenuModel> GetMenus();
         MenuModel GetMenuModel(int idPlato);
-        public void Agregar(MenuAddModel menuAdd);
-        public void Actualizar(MenuUpdateModel menuUpdate);
-        public void Eliminar(MenuRemoveModel menuRemove);
+        public void Agregar(MenuAgregarModel menuAdd);
+        public void Eliminar(MenuEliminarModel menuRemove);
+        public void Actualizar(MenuActualizarModel menuRemove);
     }
 }
