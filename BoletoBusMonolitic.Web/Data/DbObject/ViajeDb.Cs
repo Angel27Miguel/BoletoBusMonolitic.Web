@@ -86,7 +86,7 @@ namespace BoletoBusMonolitic.Web.Date.Daos
 
         public List<ViajeModel> GetViajeModels()
         {
-            return this.context.Viaje.Select(cd => new ViajeModel()
+            return this.context.Viaje.OrderByDescending(e => e.FechaCreacion).Select(cd => new ViajeModel()
             {
                 IdViaje = cd.IdViaje,
                 IdBus = cd.IdBus,

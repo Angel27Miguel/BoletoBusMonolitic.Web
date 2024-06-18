@@ -49,7 +49,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         public List<ReservaModel> GetReservaList()
         {
-            return this.context.Reserva.Select(cd => new ReservaModel()
+            return this.context.Reserva.OrderByDescending(e => e.FechaCreacion).Select(cd => new ReservaModel()
             {
                 IdReserva = cd.IdReserva,
                 IdViaje = cd.IdViaje,

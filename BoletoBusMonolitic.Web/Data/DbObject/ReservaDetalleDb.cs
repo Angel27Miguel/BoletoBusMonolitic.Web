@@ -35,7 +35,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
 
         public List<ReservaDetalleModel> GetReservaDetalleList()
         {
-            return this.context.ReservaDetalle.Select(crd => new ReservaDetalleModel()
+            return this.context.ReservaDetalle.OrderByDescending(e => e.FechaCreacion).Select(crd => new ReservaDetalleModel()
             {
                 IdReservaDetalle = crd.IdReservaDetalle,
                 IdReserva = crd.IdReserva,
