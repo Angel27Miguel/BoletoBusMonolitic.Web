@@ -11,7 +11,6 @@ public class Viaje : BaseEntity
 
     #region "Atributos"
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdViaje { get; set; }
     public int IdBus { get; set; }
     public int IdRuta { get; set; }
@@ -25,7 +24,6 @@ public class Viaje : BaseEntity
    
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public int AsientoDisponibles { get; set; }
-    public DateTime FechaCreacion { get; set; }
 
     #endregion
 

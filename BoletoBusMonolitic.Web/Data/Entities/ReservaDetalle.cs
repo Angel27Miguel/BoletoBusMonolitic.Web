@@ -6,14 +6,14 @@ namespace BoletoBusMonolitic.Web.Data.Entites
 {
     public class ReservaDetalle : BaseEntity
     {
-        //Atributos de la entidad 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		#region "Atributos"
+		[Key]
         public int IdReservaDetalle { get; set; }
         public int IdReserva { get; set; }
         public int IdAsiento { get; set; }
-        public DateTime FechaCreacion { get; set; }
 
-    }
+		#endregion
+
+	}
 }
 //Angel Miguel de la Rosa

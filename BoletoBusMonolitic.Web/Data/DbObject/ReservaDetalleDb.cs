@@ -1,84 +1,79 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
-using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject
 {
-    public class ReservaDetalleDb : IReservaDetalle
-    {
-        private readonly BoletoBusContext context;
-       
+	public class ReservaDetalleDb : IReservaDetalle
+	{
+		private readonly BoletoBusContext context;
 
-        public ReservaDetalleDb(BoletoBusContext context)
-        {
-            this.context = context;
-        }
+		public ReservaDetalleDb(BoletoBusContext context)
+		{
+			this.context = context;
+		}
 
-        public void EditarReservaDetalle(ReservaDetalleModelEdit reservaEditar)
-        {
-            var editarReserva = this.context.ReservaDetalle.Find(reservaEditar.IdReservaDetalle);
-            if (editarReserva == null)
-            {
-                throw new ArgumentException("Reserva no encontrado");
-            }
+		private ReservaDetalle GetReservaDetalleId(int idReservaDetalle)
+		{
+			var reservaDetalle = this.context.ReservaDetalle.Find(idReservaDetalle);
+			if (reservaDetalle == null)
+			{
+				throw new ReservaDetalleException("Reserva no encontrada");
+			}
+			return reservaDetalle;
+		}
 
-            editarReserva.IdReserva = reservaEditar.IdReserva;
-            editarReserva.IdAsiento = reservaEditar.IdAsiento;
-            editarReserva.FechaCreacion = reservaEditar.FechaCreacion;
-            
+		public void EditarReservaDetalle(ReservaDetalleModelEdit reservaEditar)
+		{
+			var reservaDetalle = GetReservaDetalleId(reservaEditar.IdReservaDetalle);
 
-            this.context.Update(editarReserva);
-            this.context.SaveChanges();
-        }
+			reservaDetalle.IdReserva = reservaEditar.IdReserva;
+			reservaDetalle.IdAsiento = reservaEditar.IdAsiento;
+			reservaDetalle.FechaCreacion = reservaEditar.FechaCreacion;
 
-        public List<ReservaDetalleModel> GetReservaDetalleList()
-        {
-            return this.context.ReservaDetalle.OrderByDescending(e => e.FechaCreacion).Select(crd => new ReservaDetalleModel()
-            {
-                IdReservaDetalle = crd.IdReservaDetalle,
-                IdReserva = crd.IdReserva,
-                IdAsiento = crd.IdAsiento,
-                FechaCreacion = crd.FechaCreacion
+			this.context.Update(reservaDetalle);
+			this.context.SaveChanges();
+		}
 
-    }).ToList();
-        }
+		public List<ReservaDetalleModel> GetReservaDetalleList()
+		{
+			return this.context.ReservaDetalle.OrderByDescending(e => e.FechaCreacion).Select(reservaDetalle => new ReservaDetalleModel()
+			{
+				IdReservaDetalle = reservaDetalle.IdReservaDetalle,
+				IdReserva = reservaDetalle.IdReserva,
+				IdAsiento = reservaDetalle.IdAsiento,
+				FechaCreacion = reservaDetalle.FechaCreacion
+			}).ToList();
+		}
 
-        public ReservaDetalleModel GetReservaDetalleModel(int IdReservaDetalle)
-        {
-            var reserva = this.context.ReservaDetalle.Find(IdReservaDetalle);
+		public ReservaDetalleModel GetReservaDetalleModel(int idReservaDetalle)
+		{
+			var reservaDetalle = GetReservaDetalleId(idReservaDetalle);
 
-            ArgumentNullException.ThrowIfNull(reserva, "Reserva no encontrado");
+			return new ReservaDetalleModel()
+			{
+				IdReservaDetalle = reservaDetalle.IdReservaDetalle,
+				IdReserva = reservaDetalle.IdReserva,
+				IdAsiento = reservaDetalle.IdAsiento,
+				FechaCreacion = reservaDetalle.FechaCreacion
+			};
+		}
 
-            ReservaDetalleModel reservaModel = new ReservaDetalleModel()
-            {
-                IdReservaDetalle = reserva.IdReservaDetalle,
-                IdReserva = reserva.IdReserva,
-                IdAsiento = reserva.IdAsiento,
-                FechaCreacion = reserva.FechaCreacion
+		public void GuardarReservaDetalle(ReservaDetalleModelGuardar reservaGuardar)
+		{
+			ReservaDetalle reservaDetalle = new()
+			{
+				IdReserva = reservaGuardar.IdReserva,
+				IdAsiento = reservaGuardar.IdAsiento,
+				FechaCreacion = reservaGuardar.FechaCreacion
+			};
 
-            };
-            return reservaModel;
-        }
-
-        public void GuardarReservaDetalle(ReservaDetalleModelGuardar reservaGuardar)
-        {
-            ReservaDetalle reserva = new ReservaDetalle()
-            {
-
-                IdReserva = reservaGuardar.IdReserva,
-                IdAsiento = reservaGuardar.IdAsiento,
-                FechaCreacion = reservaGuardar.FechaCreacion
-          
-
-
-            };
-            this.context.Add(reserva);
-            this.context.SaveChanges();
-        }
-
-    }
-    
+			this.context.Add(reservaDetalle);
+			this.context.SaveChanges();
+		}
+	}
 }
+
 //Angel Miguel de la Rosa

@@ -7,9 +7,12 @@
 
         }
 
-        public void Error()
-        {
-            throw new EmpleadosException("Empleado no encontrado");
-        }
-    }
+		private void LogError(string message)
+		{
+		}
+
+		private void SendError(string message)
+		{
+		}
+	}
 }

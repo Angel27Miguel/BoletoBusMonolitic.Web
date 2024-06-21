@@ -7,7 +7,6 @@ namespace BoletoBusMonolitic.Web.Data.Models
     public class ViajeModel
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdViaje { get; set; }
         public int IdBus { get; set; }
         public int IdRuta { get; set; }

@@ -6,7 +6,6 @@ namespace BoletoBusMonolitic.Web.Data.Models
     public class ReservaEditarModel
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdReserva { get; set; }
         public int IdViaje { get; set; }
         public int IdPasajero { get; set; }

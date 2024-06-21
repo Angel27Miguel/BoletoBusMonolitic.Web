@@ -8,11 +8,14 @@
         
         }
 
-        public void ErrorMessage()
-        {
-           throw new ViajeException ("Viaje no encontrado");
-        }
+		private void LogError(string message)
+		{
+		}
 
-      
-    }
+		private void SendError(string message)
+		{
+		}
+
+
+	}
 }

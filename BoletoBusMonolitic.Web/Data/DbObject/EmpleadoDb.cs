@@ -1,98 +1,83 @@
 ﻿using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entites;
-using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Entities;
+using BoletoBusMonolitic.Web.Data.Exeptions;
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.DbObject
 {
-    public class EmpleadoDb : IEmpleados
-    {
-        private readonly BoletoBusContext context;
-  
+	public class EmpleadoDb : IEmpleados
+	{
+		private readonly BoletoBusContext context;
 
-        public EmpleadoDb(BoletoBusContext context)
-        {
-            this.context = context;
-            
-        }
-        public void EditarEmpleados(EmpleadosEditarModel empleadosEditar)
-        {
-            var empleado = this.context.Empleado.Find(empleadosEditar.IdEmpleado); // Buscar por Id
+		public EmpleadoDb(BoletoBusContext context)
+		{
+			this.context = context;
+		}
 
-            if (empleado == null)
-            {
-                throw new ArgumentException("Empleado no encontrado");
-            }
+		private Empleados GetEmpleadoId(int idEmpleado)
+		{
+			var empleado = this.context.Empleado.Find(idEmpleado);
+			if (empleado == null)
+			{
+				throw new EmpleadosException("Empleado no encontrado");
+			}
+			return empleado;
+		}
 
-            empleado.Nombre = empleadosEditar.Nombre;
-            empleado.Cargo = empleadosEditar.Cargo;
+		public void EditarEmpleados(EmpleadosEditarModel empleadosEditar)
+		{
+			var empleado = GetEmpleadoId(empleadosEditar.IdEmpleado);
 
-            this.context.Empleado.Update(empleado);
-            this.context.SaveChanges();
-        }
+			empleado.Nombre = empleadosEditar.Nombre;
+			empleado.Cargo = empleadosEditar.Cargo;
 
+			this.context.Empleado.Update(empleado);
+			this.context.SaveChanges();
+		}
 
+		public void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar)
+		{
+			var empleado = GetEmpleadoId(empleadosEliminar.IdEmpleado);
 
-        public void EliminarEmpleados(EmpleadosEliminarModel empleadosEliminar)
-        {
-            var empleadoMobelEliminar = this.context.Empleado.Find(empleadosEliminar.IdEmpleado);
-            if (empleadoMobelEliminar == null)
-            {
-                throw new ArgumentException("Empleado no encontrado");
-            }
+			this.context.Remove(empleado);
+			this.context.SaveChanges();
+		}
 
+		public EmpleadosModel GetEmpleado(int idEmpleado)
+		{
+			var empleado = GetEmpleadoId(idEmpleado);
 
+			return new EmpleadosModel()
+			{
+				IdEmpleado = empleado.IdEmpleado,
+				Nombre = empleado.Nombre,
+				Cargo = empleado.Cargo
+			};
+		}
 
-            empleadoMobelEliminar.IdEmpleado = empleadosEliminar.IdEmpleado;
+		public List<EmpleadosModel> GetEmpleados()
+		{
+			return this.context.Empleado.Select(Em => new EmpleadosModel()
+			{
+				IdEmpleado = Em.IdEmpleado,
+				Nombre = Em.Nombre,
+				Cargo = Em.Cargo
+			}).ToList();
+		}
 
-            this.context.Remove(empleadoMobelEliminar);
-            this.context.SaveChanges();
-        }
+		public void GuardarEmpleado(EmpleadosGuardarModel empleadosGuardar)
+		{
+			Empleados empleado = new()
+			{
+				Nombre = empleadosGuardar.Nombre,
+				Cargo = empleadosGuardar.Cargo
+			};
 
-        public void EliminarEmpleados(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public EmpleadosModel GetEmpleado(int IdEmpleado)
-        {
-            var empleados = this.context.Empleado.Find(IdEmpleado);
-
-            ArgumentNullException.ThrowIfNull(empleados,"Empleado no encontrado");
-
-            EmpleadosModel empleadosModel = new EmpleadosModel()
-            {
-                IdEmpleado = empleados.IdEmpleado,
-                Nombre = empleados.Nombre,
-                Cargo = empleados.Cargo
-            };
-            return empleadosModel;
-        }
-
-        public List<EmpleadosModel> GetEmpleados()
-        {
-            return this.context.Empleado.Select(cd => new EmpleadosModel()
-            {
-              IdEmpleado = cd.IdEmpleado,
-              Nombre = cd.Nombre,
-              Cargo = cd.Cargo
-
-            }).ToList();
-        }
-
-        public void GuardarEmpleado(EmpleadosGuardarModel empleadosGuardar)
-        {
-            Empleados empleados = new ()
-            {
-
-                Nombre = empleadosGuardar.Nombre,
-                Cargo = empleadosGuardar.Cargo
-
-            };
-            this.context.Empleado.Add(empleados);
-            this.context.SaveChanges();
-        }
-    }
+			this.context.Empleado.Add(empleado);
+			this.context.SaveChanges();
+		}
+	}
 }
+
 //Angel Miguel de la Rosa
