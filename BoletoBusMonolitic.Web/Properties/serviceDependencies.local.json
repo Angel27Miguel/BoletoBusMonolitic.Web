@@ -8,7 +8,7 @@
       "secretStore": "LocalSecretsFile",
       "resourceId": null,
       "type": "mssql.local",
-      "connectionId": "Server"
+      "connectionId": "ConnectionStrings:DBBoletoBusConnection"
     }
   }
 }

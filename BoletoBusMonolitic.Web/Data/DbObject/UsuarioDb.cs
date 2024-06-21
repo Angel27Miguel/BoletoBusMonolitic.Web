@@ -86,7 +86,9 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             this.context.SaveChanges();
         }
 
-        public List<UsuarioModel> GetUsuarioModels()
+      
+
+        public List<UsuarioModel> GetUsuarioList()
         {
             return this.context.Usuario.Select(us => new UsuarioModel()
             {
@@ -97,6 +99,9 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 TipoUsuario = us.TipoUsuario,
                 FechaCreacion = us.FechaCreacion
             }).ToList();
+
         }
+
+       
     }
 }
