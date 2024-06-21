@@ -1,5 +1,6 @@
 
 using BoletoBusMonolitic.Web.Data.Context;
+using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BoletoBusContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
+
+builder.Services.AddScoped<IBus, BusDb>();
 
 
 // Agregar servicios de autorización

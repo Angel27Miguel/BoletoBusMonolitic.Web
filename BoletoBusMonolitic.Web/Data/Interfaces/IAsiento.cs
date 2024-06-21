@@ -5,7 +5,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IAsiento
     {
-        List<AsientoModel> GetAsientoModels();
+        List<AsientoModel> GetAsientoList();
         AsientoModel GetAsientoModel(int idAsiento);
 
         public void AgregarAsiento(AsientoAgregarModel asientoAgregar);

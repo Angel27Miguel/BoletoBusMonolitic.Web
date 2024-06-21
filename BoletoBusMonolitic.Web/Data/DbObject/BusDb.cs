@@ -9,12 +9,10 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class BusDb : IBus
     {
         private readonly BoletoBusContext context;
-        private readonly RutaException exception;
 
-        public BusDb(BoletoBusContext context, RutaException exception)
+        public BusDb(BoletoBusContext context)
         {
             this.context = context;
-            this.exception = exception;
 
 
         }
