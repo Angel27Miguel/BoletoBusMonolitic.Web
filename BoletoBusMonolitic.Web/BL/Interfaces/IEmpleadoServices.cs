@@ -1,9 +1,17 @@
-﻿using BoletoBusMonolitic.Web.Data.Models;
+﻿using BoletoBusMonolitic.Web.BL.Core;
+using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.BL.Interfaces
 {
 	public interface IEmpleadoServices
 	{
-		List<EmpleadosModel> GetEmpleadosModels();
+		ServiceResult GetEmpleados();
+		ServiceResult GetEmpleado(int id);
+
+		ServiceResult EditarEmpleado(EmpleadosEditarModel empleadoEditar);
+
+		ServiceResult EliminarEmpleado(EmpleadosEliminarModel empleadoEliminar);
+
+		ServiceResult GuardarrEmpleado(EmpleadosGuardarModel empleadoGuardar);
 	}
 }
