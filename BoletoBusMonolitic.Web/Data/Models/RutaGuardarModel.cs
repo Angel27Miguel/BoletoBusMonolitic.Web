@@ -1,7 +1,13 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace BoletoBusMonolitic.Web.Data.Models
 {
     public class RutaGuardarModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public string Origen { get; set; } 
 
         public string Destino { get; set; } 

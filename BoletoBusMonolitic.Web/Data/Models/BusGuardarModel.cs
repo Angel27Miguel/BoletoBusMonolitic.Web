@@ -1,7 +1,13 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace BoletoBusMonolitic.Web.Data.Models
 {
     public class BusGuardarModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int NumeroPlaca { get; set; } 
 
         public string Nombre { get; set; } 

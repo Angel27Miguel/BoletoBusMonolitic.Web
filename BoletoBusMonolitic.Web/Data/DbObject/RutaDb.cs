@@ -11,7 +11,11 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     {
 
         private readonly BoletoBusContext context;
-        private readonly RutaException exception;
+        
+        public RutaDb(BoletoBusContext context)
+        {
+            this.context = context; 
+        }
 
         public void GuardarRuta(RutaGuardarModel rutaGuardar)
         {

@@ -1,9 +1,12 @@
-﻿namespace BoletoBusMonolitic.Web.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BoletoBusMonolitic.Web.Data.Models
 {
     public class AsientoModel
     {
 
-            public int IdAsiento { get; set; } 
+        [Key]
+        public int IdAsiento { get; set; } 
 
             public int? IdBus { get; set; } 
 

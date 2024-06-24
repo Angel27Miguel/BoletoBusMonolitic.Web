@@ -13,6 +13,10 @@ builder.Services.AddDbContext<BoletoBusContext>(options =>
 
 
 builder.Services.AddScoped<IBus, BusDb>();
+builder.Services.AddScoped<IAsiento, AsientoDb>();
+builder.Services.AddScoped<IRuta, RutaDb>();
+builder.Services.AddScoped<IUsuario, UsuarioDb>();
+
 
 
 // Agregar servicios de autorización

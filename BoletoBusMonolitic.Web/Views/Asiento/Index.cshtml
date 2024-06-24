@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BoletoBusMonolitic.Web.Data.Models.AsientoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Asiento</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroPiso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroAsiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroPiso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroAsiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAsiento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAsiento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAsiento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

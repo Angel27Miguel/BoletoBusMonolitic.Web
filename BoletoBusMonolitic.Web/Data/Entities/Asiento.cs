@@ -1,9 +1,14 @@
 ﻿using BoletoBusMonolitic.Web.Data.Core;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BoletoBusMonolitic.Web.Data.Entites
 {
     public class Asiento : BaseEntity
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int IdBus {  get; set; }
         public int IdAsiento { get; set; }
         public int NumeroPiso { get; set; }

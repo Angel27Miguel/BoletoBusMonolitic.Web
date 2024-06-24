@@ -7,14 +7,14 @@ namespace BoletoBusMonolitic.Web.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuario usuariodb;
-        public UsuarioController() {
+        public UsuarioController(IUsuario usuariodb) {
             this.usuariodb = usuariodb;
         }  
         // GET: UsuarioController
         public ActionResult Index()
         {
-            var asiento = this.usuariodb.GetUsuarioList();  
-            return View(asiento);
+            var usuario = this.usuariodb.GetUsuarioList();  
+            return View(usuario);
         }
 
         // GET: UsuarioController/Details/5
