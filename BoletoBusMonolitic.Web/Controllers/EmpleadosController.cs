@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.DbObject;
+﻿using BoletoBusMonolitic.Web.BL.Interfaces;
+using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
@@ -9,9 +10,9 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class EmpleadosController : Controller
     {
-        private readonly IEmpleados empleados;
+        private readonly IEmpleadoServices empleados;
 
-        public EmpleadosController(IEmpleados empleados)
+        public EmpleadosController(IEmpleadoServices empleados)
         {
             this.empleados = empleados;
         }
@@ -20,14 +21,24 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Index()
         {
 
-            var empleado = this.empleados.GetEmpleados();
-            return View(empleado);
+            var result = this.empleados.GetEmpleados();
+
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+                var empleados = (List < EmpleadosModel >) result.Data;
+
+			
+            return View(empleados);
         }
 
         // GET: EmpleadosController/Details/5
         public ActionResult Details(int id)
         {
-            var empleado = this.empleados.GetEmpleado(id);
+            var result = this.empleados.GetEmpleado(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var empleado = (EmpleadosModel)result.Data;
+            
             return View(empleado);
         }
 
@@ -57,7 +68,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: EmpleadosController/Edit/5
         public ActionResult Edit(int id)
         {
-            var empleado = this.empleados.GetEmpleado(id);
+            var result = this.empleados.GetEmpleado(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var empleado = (EmpleadosModel)result.Data;
+
             return View(empleado);
         }
 
@@ -69,7 +84,7 @@ namespace BoletoBusMonolitic.Web.Controllers
             try
             {
 
-                this.empleados.EditarEmpleados(empleadosEditar);
+                this.empleados.EditarEmpleado(empleadosEditar);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -12,6 +12,6 @@ namespace BoletoBusMonolitic.Web.BL.Interfaces
 
 		ServiceResult EliminarEmpleado(EmpleadosEliminarModel empleadoEliminar);
 
-		ServiceResult GuardarrEmpleado(EmpleadosGuardarModel empleadoGuardar);
+		ServiceResult GuardarEmpleado(EmpleadosGuardarModel empleadoGuardar);
 	}
 }
