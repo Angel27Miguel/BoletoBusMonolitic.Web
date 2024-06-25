@@ -1,4 +1,6 @@
-﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+﻿using BoletoBusMonolitic.Web.Data.Entites;
+using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,22 +22,26 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: UsuarioController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var usuario = this.usuariodb.GetUsuarioList();
+            return View(usuario);
         }
 
         // GET: UsuarioController/Create
         public ActionResult Create()
         {
-            return View();
+            
+                return View();
+            
         }
 
         // POST: UsuarioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(UsuarioAgregarModel usuarioAgregar)
         {
             try
             {
+                this.usuariodb.AgregarUsuario(usuarioAgregar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -53,10 +59,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: UsuarioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, UsuarioEditarModel usuarioEditar)
         {
             try
             {
+                this.usuariodb.EditarUsuario(usuarioEditar);
                 return RedirectToAction(nameof(Index));
             }
             catch

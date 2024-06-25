@@ -37,9 +37,9 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             };
         }
 
-        public void AgregarAsiento(AsientoAgregarModel asientoAgregar)
+        public void AgregarAsiento(AsientoGuardarModel asientoAgregar)
         {
-            Asiento asiento = new Asiento()
+            Asiento asiento = new()
             {
                 IdBus = asientoAgregar.IdBus,
                 NumeroPiso = asientoAgregar.NumeroPiso,
@@ -63,7 +63,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             asiento.IdBus = asientoEditar.IdBus;
             asiento.NumeroPiso = asientoEditar.NumeroPiso;
             asiento.NumeroAsiento = asientoEditar.NumeroAsiento;
-            asiento.FechaCreacion = (DateTime)asientoEditar.FechaCreacion;
+            asiento.FechaCreacion = asientoEditar.FechaCreacion;
 
             this.context.Asiento.Update(asiento);
             this.context.SaveChanges();

@@ -7,7 +7,7 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     public class Asiento : BaseEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
 
         public int IdBus {  get; set; }
         public int IdAsiento { get; set; }

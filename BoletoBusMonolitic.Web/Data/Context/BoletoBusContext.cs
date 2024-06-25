@@ -20,6 +20,7 @@ namespace BoletoBusMonolitic.Web.Data.Context
         public DbSet<BoletoBusMonolitic.Web.Data.Models.BusModel> BusModel { get; set; } = default!;
         public DbSet<BoletoBusMonolitic.Web.Data.Models.RutaModel> RutaModel { get; set; } = default!;
         public DbSet<BoletoBusMonolitic.Web.Data.Models.UsuarioModel> UsuarioModel { get; set; } = default!;
+        public DbSet<BoletoBusMonolitic.Web.Data.Models.AsientoGuardarModel> AsientoGuardarModel { get; set; } = default!;
         #endregion
 
     }

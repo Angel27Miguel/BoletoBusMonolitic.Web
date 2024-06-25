@@ -42,11 +42,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaCreacion)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAsiento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAsiento">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAsiento">Delete</a>
-            </td>
+        
+
+                <td>
+
+
+                    <a asp-action="Edit" asp-route-id="@item.IdAsiento">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdAsiento">Details</a>
+
+                </td>
         </tr>
 }
     </tbody>

@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BoletoBusMonolitic.Web.Data.Models
 {
-    public class AsientoAgregarModel
+    public class AsientoGuardarModel
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
+       
+        public int IdAsiento { get; set; }
         public int IdBus { get; set; } 
 
         public int NumeroPiso { get; set; } 

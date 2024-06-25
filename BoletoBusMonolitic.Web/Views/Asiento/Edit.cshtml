@@ -1,0 +1,45 @@
+﻿@model BoletoBusMonolitic.Web.Data.Models.AsientoModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Asiento</h1>
+
+<h4>AsientoModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdAsiento" />
+            <div class="form-group">
+                <label asp-for="IdBus" class="control-label"></label>
+                <input asp-for="IdBus" class="form-control" />
+                <span asp-validation-for="IdBus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroPiso" class="control-label"></label>
+                <input asp-for="NumeroPiso" class="form-control" />
+                <span asp-validation-for="NumeroPiso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroAsiento" class="control-label"></label>
+                <input asp-for="NumeroAsiento" class="form-control" />
+                <span asp-validation-for="NumeroAsiento" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
