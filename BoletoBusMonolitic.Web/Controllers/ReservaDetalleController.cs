@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.DbObject;
+﻿using BoletoBusMonolitic.Web.BL.Interfaces;
+using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
@@ -10,24 +11,30 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ReservaDetalleController : Controller
     {
-        private readonly IReservaDetalle reservaDetalleDb;
+        private readonly IReservaDetalleServices reservaDetalleDb;
 
-        public ReservaDetalleController(IReservaDetalle reservaDetalleDb)
+        public ReservaDetalleController(IReservaDetalleServices reservaDetalleDb)
         {
             this.reservaDetalleDb = reservaDetalleDb;
         }
         // GET: ReservaDetalleController
         public ActionResult Index()
         {
-            var reservaD = this.reservaDetalleDb.GetReservaDetalleList();
+            var result = this.reservaDetalleDb.GetReservaDetalles();
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var reservaD = (List<ReservaDetalleModel>)result.Data;
             return View(reservaD); 
         }
 
         // GET: ReservaDetalleController/Details/5
         public ActionResult Details(int id)
         {
-            var reserva = this.reservaDetalleDb.GetReservaDetalleModel(id);
-            return View(reserva);
+            var result = this.reservaDetalleDb.GetReservaDetalle(id);
+            if (!result.Success) ViewBag.Massage = result.Message; 
+
+            var reservaD = (ReservaDetalleModel)result.Data;
+            return View(reservaD);
         }
 
         // GET: ReservaDetalleController/Create
@@ -56,9 +63,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaDetalleController/Edit/5
         public ActionResult Edit(int id)
         {
-			var reserva = this.reservaDetalleDb.GetReservaDetalleModel(id);
-			return View(reserva);
-		}
+            var result = this.reservaDetalleDb.GetReservaDetalle(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var reservaD = (ReservaDetalleModel)result.Data;
+            return View(reservaD);
+        }
 
         // POST: ReservaDetalleController/Edit/5
         [HttpPost]
