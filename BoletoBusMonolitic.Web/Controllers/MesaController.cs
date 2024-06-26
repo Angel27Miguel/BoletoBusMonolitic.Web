@@ -1,4 +1,5 @@
 ﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,23 +7,24 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class MesaController : Controller
     {
-        private readonly ICliente cliente;
+        private readonly IMesa mesa;
 
-        public MesaController(ICliente cliente)
+        public MesaController(IMesa mesa)
         {
-            this.cliente = cliente;
+            this.mesa = mesa;
         }
         // GET: MesaController
         public ActionResult Index()
         {
-            var cliente = this.cliente.GetClienteList();
-            return View(cliente);
+            var mesa = this.mesa.GetMesaModel();
+            return View(mesa);
         }
 
         // GET: MesaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var mesa = this.mesa.GetMesa(id);
+            return View(mesa);
         }
 
         // GET: MesaController/Create
@@ -34,10 +36,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: MesaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MesaSaveModel mesaSave)
         {
             try
             {
+                this.mesa.GuardarMesa(mesaSave);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -49,16 +52,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: MesaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var mesa = this.mesa.GetMesa(id);
+            return View(mesa);
         }
 
         // POST: MesaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, MesaUpdateModel mesaUpdate)
         {
             try
             {
+                this.mesa.UpdateMesa(mesaUpdate);
                 return RedirectToAction(nameof(Index));
             }
             catch

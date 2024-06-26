@@ -1,5 +1,6 @@
 ﻿using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,14 +21,15 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ClienteController
         public ActionResult Index()
         {
-            var cliente = this.cliente.GetClienteList();
+            var cliente = this.cliente.GetClienteModel();
             return View(cliente);
         }
 
         // GET: ClienteController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var cliente = this.cliente.GetCliente(id);
+            return View(cliente);
         }
 
         // GET: ClienteController/Create
@@ -39,11 +41,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: ClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ClienteSaveModel clienteSave)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                this.cliente.GuardarCliente(clienteSave);
+                return RedirectToAction(nameof(Index)); // 
             }
             catch
             {
@@ -54,16 +57,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ClienteController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var cliente = this.cliente.GetCliente(id);
+            return View(cliente);
         }
 
         // POST: ClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ClienteUpdateModel  clienteUpdate)
         {
             try
             {
+                this.cliente.ActualizarClientes(clienteUpdate);
                 return RedirectToAction(nameof(Index));
             }
             catch

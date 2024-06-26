@@ -1,28 +1,31 @@
 ﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoletoBusMonolitic.Web.Controllers
 {
     public class FacturaController : Controller
-    {
-        private readonly ICliente cliente;
 
-        public FacturaController(ICliente cliente)
+    {
+        private readonly IFactura factura;
+
+        public FacturaController(IFactura factura)
         {
-            this.cliente = cliente;
+            this.factura = factura;
         }
         // GET: FacturaController
         public ActionResult Index()
         {
-            var cliente = this.cliente.GetClienteList();
-            return View(cliente);
+            var factura = this.factura.GetFacturaModel();
+            return View(factura);
         }
 
         // GET: FacturaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var factura = this.factura.GetFactura(id);
+            return View(factura);
         }
 
         // GET: FacturaController/Create
@@ -34,10 +37,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: FacturaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(FacturaSaveModel facturaSave)
         {
             try
             {
+                this.factura.GuardarFactura(facturaSave);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -49,16 +53,18 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: FacturaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var factura = this.factura.GetFactura(id);
+            return View(factura);
         }
 
         // POST: FacturaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, FacturaUpdateModel facturaUpdate)
         {
             try
             {
+                this.factura.ActualizarFactura(facturaUpdate);
                 return RedirectToAction(nameof(Index));
             }
             catch
