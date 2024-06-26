@@ -1,8 +1,11 @@
-﻿using BoletoBusMonolitic.Web.Data.Context;
+﻿using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.BL.Interfaces;
+using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 
@@ -11,24 +14,34 @@ namespace BoletoBusMonolitic.Web.Controllers
     public class ViajeController : Controller
     {
 
-       private readonly IViajeDb viajeDb;
+       private readonly IViajeService viajeDb;
 
-        public ViajeController(IViajeDb viajeDb)
+        public ViajeController(IViajeService viajeDb)
         {
             this.viajeDb = viajeDb;
         }
         // GET: ViajeController1
         public ActionResult Index()
         {
-            var viaje = this.viajeDb.GetViajeModels();
+            var result = this.viajeDb.GetViajes();
+
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var viaje = (List<ViajeModel>)result.Data;
+
+
             return View(viaje);
-            
+
         }
 
         // GET: ViajeController1/Details/5
         public ActionResult Details(int id)
         {
-            var viaje = this.viajeDb.GetViaje(id);
+            var result = this.viajeDb.GetViaje(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var viaje = (ViajeModel)result.Data;
+
             return View(viaje);
         }
 
@@ -58,8 +71,11 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ViajeController1/Edit/5
         public ActionResult Edit(int id)
         {
+            var result = this.viajeDb.GetViaje(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
 
-            var viaje = this.viajeDb.GetViaje(id);
+            var viaje = (ViajeModel)result.Data;
+
             return View(viaje);
         }
 

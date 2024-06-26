@@ -20,7 +20,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Index()
         {
             var reservaD = this.reservaDetalleDb.GetReservaDetalleList();
-            return View(reservaD); ;
+            return View(reservaD); 
         }
 
         // GET: ReservaDetalleController/Details/5

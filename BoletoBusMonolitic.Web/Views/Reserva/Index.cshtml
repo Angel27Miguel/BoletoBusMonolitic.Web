@@ -9,6 +9,10 @@
 <p>
     <a asp-action="Create">Create New Reserva</a>
 </p>
+@if (ViewBag.Massage is null)
+{
+    <span class="alert-danger"> @ViewBag.Massage</span>
+}
 <table class="table">
     <thead>
         <tr>

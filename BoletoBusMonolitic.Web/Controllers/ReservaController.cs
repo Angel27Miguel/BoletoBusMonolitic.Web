@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.DbObject;
+﻿using BoletoBusMonolitic.Web.BL.Interfaces;
+using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entities;
 using BoletoBusMonolitic.Web.Data.Models;
 using BoletoBusMonolitic.Web.Date.Daos;
@@ -9,23 +10,33 @@ namespace BoletoBusMonolitic.Web.Controllers
 {
     public class ReservaController : Controller
     {
-        private readonly IReserva reservaDb;
+        private readonly IReservaServices reservaDb;
 
-        public ReservaController(IReserva reservaDb)
+        public ReservaController(IReservaServices reservaDb)
         {
             this.reservaDb = reservaDb;
         }
         // GET: ReservaController
         public ActionResult Index()
         {
-            var reserva = this.reservaDb.GetReservaList();
+            var result = this.reservaDb.GetReservas();
+
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var reserva = (List<ReservaModel>)result.Data;
+
+
             return View(reserva);
         }
 
         // GET: ReservaController/Details/5
         public ActionResult Details(int id)
         {
-            var reserva = this.reservaDb.GetReservaModel(id);
+            var result = this.reservaDb.GetReserva(id);
+            if (!result.Success) ViewBag.Massage = result.Message;
+
+            var reserva = (ReservaModel)result.Data;
+
             return View(reserva);
         }
 
@@ -55,7 +66,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var reserva = this.reservaDb.GetReservaModel(id);
+            var reserva = this.reservaDb.GetReserva(id);
             return View(reserva);
         }
 
@@ -79,23 +90,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: ReservaController/Delete/5
         public ActionResult Delete(int id)
         {
-            var reserva = this.reservaDb.GetReservaModel(id);
-            if (reserva == null)
-            {
-                return NotFound();
-            }
-
-            ReservaEliminarModel eliminarModel = new ReservaEliminarModel
-            {
-                IdReserva = reserva.IdReserva,
-                IdViaje = reserva.IdViaje,
-                IdPasajero = reserva.IdPasajero,
-                AsientosReservados = reserva.AsientosReservados,
-                MontoTotal = reserva.MontoTotal,
-                FechaCreacion = reserva.FechaCreacion
-            };
-
-            return View(eliminarModel);
+            return View();
         }
 
         // POST: ReservaController/Delete/5
