@@ -1,12 +1,13 @@
-﻿using BoletoBusMonolitic.Web.Data.Entites;
+﻿
 using BoletoBusMonolitic.Web.Data.Models;
 
 namespace BoletoBusMonolitic.Web.Data.Interfaces
 {
     public interface IMesa
     {
-        Mesa GetMesa(int IDMesa);
-        List<Mesa> GetMesaList();
+        MesaModel GetMesa(int IDMesa);
+
+        List<MesaModel> GetMesaModel();
 
         public void GuardarMesa(MesaSaveModel mesaSave);
 
