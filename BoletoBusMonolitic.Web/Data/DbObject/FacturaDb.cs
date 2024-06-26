@@ -1,5 +1,4 @@
 using BoletoBusMonolitic.Web.Data.Context;
-using BoletoBusMonolitic.Web.Data.Entites;
 using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 
@@ -8,6 +7,13 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
     public class FacturaDb : IFactura
     {
         private readonly BoletoBusContext context;
+
+        public FacturaDb(BoletoBusContext context)
+        {
+            this.context = context;
+        }
+        
+
         public void ActualizarFactura(FacturaUpdateModel facturaUpdate)
         {
             Factura FacturaUptade = this.context.Factura.Find(facturaUpdate.IDFactura);
@@ -20,36 +26,14 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             this.context.SaveChanges();
         }
 
-        public void EliminarFactura(FacturaDeleteModel facturaDelete)
+        public void EliminarFactura()
         {
-            var Facturaeliminarmodel = this.context.Factura.Find(facturaDelete.IdFactura);
-            if (facturaDelete == null)
-            {
-
-            }
-
-            Facturaeliminarmodel.IDFactura = facturaDelete.IdFactura;
-
-            this.context.Remove(Facturaeliminarmodel);
-            this.context.SaveChanges();
+            
         }
 
-        public Factura GetFactura(int IDFactura)
-        {
-            var Factura = this.context.Factura.Find(IDFactura);
-            FacturaModel facturaModel = new FacturaModel()
-            {
-                IDFactura= Factura.IDFactura,
-                IDPedido= Factura.IDPedido,
-                Total=Factura.Total,    
-                Fecha=Factura.Fecha,
-            };
+        
 
-            return Factura;
-
-         }
-
-        public List<FacturaModel> GetFactura()
+        public List<FacturaModel> GetFacturaModel()
         {
             return this.context.Factura.Select(Factura => new FacturaModel()
             {
@@ -61,24 +45,37 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             }).ToList();
         }
 
-        public void GuardarFactura(FacturaSaveModel facturaSave)
+        public FacturaModel GetFactura(int IdFactura)
         {
+
+            var Factura = this.context.Factura.Find(IdFactura);
+
+            FacturaModel facturaModel = new FacturaModel()
             {
-               Factura factura= new Factura()
-                {
-                   IDFactura = facturaSave.IDFactura,
-                   IDPedido = facturaSave.IDPedido,
-                   Total = facturaSave.Total,
-                   Fecha = facturaSave.Fecha
+                IDFactura = Factura.IDFactura,
+                IDPedido = Factura.IDPedido,
+                Total = Factura.Total,
+                Fecha = Factura.Fecha,
+            };
 
-               };
-                this.context.Factura.Add(factura);
-                this.context.SaveChanges();
+            return facturaModel ;
 
-            }
         }
 
-       
+   
+        public void GuardarFactura(FacturaSaveModel facturaSave)
+        {
+            Factura factura = new Factura()
+            {
+                IDFactura = facturaSave.IDFactura,
+                IDPedido = facturaSave.IDPedido,
+                Total = facturaSave.Total,
+                Fecha = facturaSave.Fecha
+
+            };
+            this.context.Factura.Add(factura);
+            this.context.SaveChanges();
+        }
     }
 
        
