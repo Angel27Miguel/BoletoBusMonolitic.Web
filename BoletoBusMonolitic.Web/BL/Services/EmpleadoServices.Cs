@@ -155,14 +155,14 @@ namespace BoletoBusMonolitic.Web.BL.Services
             if (nombre.Length > 100)
             {
                 result.Success = false;
-                result.Message = "El nombre del empleado debe ser de 100 caracteres.";
+                result.Message = "El nombre del empleado debe ser menor de 100 caracteres.";
                 return result;
             }
 
             if (cargo.Length > 50)
             {
                 result.Success = false;
-                result.Message = "El cargo del empleado debe ser de 50 caracteres.";
+                result.Message = "El cargo del empleado debe ser menor de 50 caracteres.";
                 return result;
             }
 
