@@ -11,12 +11,13 @@ namespace BoletoBusMonolitic.Web.Data.Entites
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int IdBus { get; set; }
-        public int IdAsiento { get; set; }
-        public int NumeroPlaca { get; set; }
-        public string Nombre { get; set; }
+        public string? NumeroPlaca { get; set; }
+        public string? Nombre { get; set; }
         public int CapacidadPiso1 { get; set; }
         public int CapacidadPiso2 { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int CapacidadTotal { get; set; }
+        
         public bool Disponible { get; set; }
         public DateTime FechaCreacion { get; set; }
 

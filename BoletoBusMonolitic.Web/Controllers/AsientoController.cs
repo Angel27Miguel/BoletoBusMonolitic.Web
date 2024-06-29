@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+﻿using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,9 @@ namespace BoletoBusMonolitic.Web.Controllers
     public class AsientoController : Controller
     {
 
-        private readonly IAsiento asientodb;
+        private readonly IAsientoServices asientodb;
 
-        public AsientoController(IAsiento asientodb)
+        public AsientoController(IAsientoServices asientodb)
         { 
                this.asientodb = asientodb;
         }
@@ -18,7 +19,9 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: AsientoController
         public ActionResult Index()
         {
-          var asiento = this.asientodb.GetAsientoList();
+          var result = this.asientodb.GetAsientoList();
+            if(!result.Success) ViewBag.Message = result.Message;
+            var asiento = (List<AsientoModel>)result.Data;
             return View(asiento);
         }
 
@@ -26,7 +29,9 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Details(int id)
         {
 
-            var asiento = this.asientodb.GetAsientoModel(id);
+            var result = this.asientodb.GetAsientoModel(id);
+            if (!result.Success) ViewBag.Message = result.Message;
+            var asiento = (AsientoModel)result.Data;
             return View(asiento);
         }
 
@@ -62,7 +67,9 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Edit(int id)
         {
 
-            var asiento = this.asientodb.GetAsientoModel(id);
+            var result = this.asientodb.GetAsientoModel(id);
+            if (!result.Success) ViewBag.Message = result.Message;
+            var asiento = (AsientoModel)result.Data;
             return View(asiento);
 
         }

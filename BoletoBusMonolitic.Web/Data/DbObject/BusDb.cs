@@ -18,20 +18,30 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         }
         public BusModel GetBusModel(int IdBus)
         {
-            var bus = this.context.Bus.Find(IdBus);
+            var bu = this.context.Bus.Find(IdBus);
 
-            if (bus == null)
+            if (bu == null)
             {
                 throw new ArgumentNullException("Este bus no se encuentra registrado");
             }
 
             return new BusModel
             {
-                IdBus = bus.IdBus,
-                
-                Nombre = bus.Nombre,
+                IdBus = bu.IdBus,
 
-                disponible = bus.Disponible
+                NumeroPlaca = bu.NumeroPlaca,
+
+                Nombre = bu.Nombre,
+
+                CapacidadPiso1 = bu.CapacidadPiso1,
+
+                CapacidadPiso2 = bu.CapacidadPiso2,
+
+                CapacidadTotal = bu.CapacidadTotal,
+
+                Disponible = bu.Disponible,
+
+                FechaCreacion = bu.FechaCreacion,
             };
         }
 
@@ -43,6 +53,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 Nombre = busGuardar.Nombre,
                 CapacidadPiso1 = busGuardar.CapacidadPiso1,
                 CapacidadPiso2 = busGuardar.CapacidadPiso2,
+                CapacidadTotal = busGuardar.CapacidadTotal,
                 Disponible = busGuardar.Disponible,
                 FechaCreacion = busGuardar.FechaCreacion
             };
@@ -54,21 +65,22 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         public void EditarBus(BusEditarModel busEditar)
         {
             var bus = this.context.Bus.Find(busEditar.IdBus);
-            
+
             if (bus == null)
             {
 
                 throw new ArgumentNullException("Bus no encontrado");
             }
 
-            bus.IdBus = busEditar.IdBus;
+            
             bus.NumeroPlaca = busEditar.NumeroPlaca;
             bus.Nombre = busEditar.Nombre;
             bus.CapacidadPiso1 = busEditar.CapacidadPiso1;
             bus.CapacidadPiso2 = busEditar.CapacidadPiso2;
+            bus.CapacidadTotal = busEditar.CapacidadTotal;
             bus.Disponible = busEditar.Disponible;
 
-            this.context.Bus.Update(bus);  
+            this.context.Bus.Update(bus);
             this.context.SaveChanges();
         }
 
@@ -94,9 +106,19 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             {
                 IdBus = bu.IdBus,
 
+                NumeroPlaca = bu.NumeroPlaca,
+
                 Nombre = bu.Nombre,
 
-                disponible = bu.Disponible
+                CapacidadPiso1 = bu.CapacidadPiso1,
+
+                CapacidadPiso2 = bu.CapacidadPiso2,
+
+                CapacidadTotal = bu.CapacidadTotal,
+
+                Disponible = bu.Disponible,
+
+                FechaCreacion = bu.FechaCreacion,
 
 
             }).ToList();

@@ -23,7 +23,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: BusController/Details/5
         public ActionResult Details(int id)
         {
-            var bus = this.busdb.GetBusList();
+            var bus = this.busdb.GetBusModel(id);
             return View(bus);
         }
 
@@ -42,6 +42,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                busGuardar.FechaCreacion = DateTime.Now;
                 this.busdb.GuardarBus(busGuardar);
                 return RedirectToAction(nameof(Index));
             }
@@ -54,7 +55,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: BusController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var bus = this.busdb.GetBusModel(id);
+            return View(bus);
         }
 
         // POST: BusController/Edit/5
@@ -64,6 +66,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                busEditar.FechaCreacion = DateTime.Now;
                 this.busdb.EditarBus(busEditar);
                 return RedirectToAction(nameof(Index));
             }

@@ -1,4 +1,6 @@
 
+using BoletoBusMonolitic.Web.BL.Interface;
+using BoletoBusMonolitic.Web.BL.Services;
 using BoletoBusMonolitic.Web.Data.Context;
 using BoletoBusMonolitic.Web.Data.DbObject;
 using BoletoBusMonolitic.Web.Data.Entites;
@@ -17,7 +19,10 @@ builder.Services.AddScoped<IAsiento, AsientoDb>();
 builder.Services.AddScoped<IRuta, RutaDb>();
 builder.Services.AddScoped<IUsuario, UsuarioDb>();
 
-
+builder.Services.AddScoped<IBusServices,BusServices >();
+builder.Services.AddScoped<IAsientoServices,AsientoServices >();
+builder.Services.AddScoped<IRutaServices,RutaServices >();
+//builder.Services.AddScoped<IUsuarioServices,UsuarioServices >();
 
 // Agregar servicios de autorización
 builder.Services.AddAuthorization();
