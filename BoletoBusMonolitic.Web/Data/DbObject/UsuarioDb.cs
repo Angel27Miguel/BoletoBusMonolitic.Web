@@ -30,7 +30,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             return new UsuarioModel
             {
                 IdUsuario = usuario.IdUsuario,
-                Nombre = usuario.Nombre,
+                Nombres = usuario.Nombres,
                 Apellidos = usuario.Apellidos,
                 Correo = usuario.Correo,
                 TipoUsuario = usuario.TipoUsuario,
@@ -42,7 +42,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
         {
             Usuario usuario = new Usuario()
             {
-                Nombre = usuarioAgregar.Nombres,
+                Nombres = usuarioAgregar.Nombres,
                 Apellidos = usuarioAgregar.Apellidos,
                 Correo = usuarioAgregar.Correo,
                 Clave = usuarioAgregar.Clave, // Asegúrate de encriptar la contraseña antes de guardarla
@@ -63,7 +63,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
                 throw new ArgumentNullException("Usuario no encontrado");
             }
 
-            usuario.Nombre = usuarioEditar.Nombres;
+            usuario.Nombres = usuarioEditar.Nombres;
             usuario.Apellidos = usuarioEditar.Apellidos;
             usuario.Correo = usuarioEditar.Correo;
             usuario.Clave = usuarioEditar.Clave; 
@@ -93,9 +93,10 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             return this.context.Usuario.Select(us => new UsuarioModel()
             {
                 IdUsuario = us.IdUsuario,
-                Nombre = us.Nombre,
+                Nombres = us.Nombres,
                 Apellidos = us.Apellidos,
                 Correo = us.Correo,
+                Clave = us.Clave,
                 TipoUsuario = us.TipoUsuario,
                 FechaCreacion = us.FechaCreacion
             }).ToList();

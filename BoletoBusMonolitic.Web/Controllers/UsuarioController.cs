@@ -22,7 +22,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: UsuarioController/Details/5
         public ActionResult Details(int id)
         {
-            var usuario = this.usuariodb.GetUsuarioList();
+            var usuario = this.usuariodb.GetUsuarioModel(id);
             return View(usuario);
         }
 
@@ -37,11 +37,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: UsuarioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsuarioAgregarModel usuarioAgregar)
+        public ActionResult Create(UsuarioAgregarModel usuarioGuardar)
         {
             try
             {
-                this.usuariodb.AgregarUsuario(usuarioAgregar);
+                usuarioGuardar.FechaCreacion = DateTime.Now;
+                this.usuariodb.AgregarUsuario(usuarioGuardar);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -53,16 +54,19 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: UsuarioController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var usuario = this.usuariodb.GetUsuarioModel(id);
+            return View(usuario);
+           
         }
 
         // POST: UsuarioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, UsuarioEditarModel usuarioEditar)
+        public ActionResult Edit(UsuarioEditarModel usuarioEditar)
         {
             try
             {
+                usuarioEditar.FechaCreacion = DateTime.Now;
                 this.usuariodb.EditarUsuario(usuarioEditar);
                 return RedirectToAction(nameof(Index));
             }

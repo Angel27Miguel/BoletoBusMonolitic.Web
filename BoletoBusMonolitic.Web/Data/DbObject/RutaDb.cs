@@ -46,7 +46,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             ruta.IdRuta = rutaEditar.IdRuta;
             ruta.Origen = rutaEditar.Origen;
             ruta.Destino = rutaEditar.Destino;
-            ruta.FechaCreacion = (DateTime)rutaEditar.FechaCreacion;
+            ruta.FechaCreacion = rutaEditar.FechaCreacion;
 
             this.context.Ruta.Update(ruta);
             this.context.SaveChanges();

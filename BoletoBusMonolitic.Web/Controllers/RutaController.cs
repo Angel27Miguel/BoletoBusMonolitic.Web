@@ -22,15 +22,15 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: RutaController/Details/5
         public ActionResult Details(int id)
         {
-            var ruta = this.rutadb.GetRutaList();
+            var ruta = this.rutadb.GetRutaModel(id);
             return View(ruta);
         }
 
         // GET: RutaController/Create
         public ActionResult Create()
         {
-            
-                return View();            
+           
+            return View();            
             
         }
 
@@ -41,6 +41,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                rutaGuardar.FechaCreacion = DateTime.Now;
                 this.rutadb.GuardarRuta(rutaGuardar);
                 return RedirectToAction(nameof(Index));
             }
@@ -54,7 +55,8 @@ namespace BoletoBusMonolitic.Web.Controllers
         // GET: RutaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var ruta = this.rutadb.GetRutaModel(id);
+            return View(ruta);
         }
 
         // POST: RutaController/Edit/5
@@ -64,6 +66,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                rutaEditar.FechaCreacion = DateTime.Now;
                 this.rutadb.EditarRuta(rutaEditar);
                 return RedirectToAction(nameof(Index));
             }
