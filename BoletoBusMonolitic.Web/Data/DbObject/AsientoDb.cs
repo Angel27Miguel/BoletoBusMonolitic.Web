@@ -37,7 +37,7 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             };
         }
 
-        public void AgregarAsiento(AsientoGuardarModel asientoAgregar)
+        public void GuardarAsiento(AsientoGuardarModel asientoAgregar)
         {
             Asiento asiento = new()
             {

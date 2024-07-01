@@ -7,7 +7,7 @@ namespace BoletoBusMonolitic.Web.Data.Interfaces
     {
         List<UsuarioModel> GetUsuarioList();
         UsuarioModel GetUsuarioModel(int id);
-        public void AgregarUsuario(UsuarioAgregarModel usuarioAgregar);
+        public void GuardarUsuario(UsuarioGuardarModel usuarioAgregar);
 
         public void EliminarUsuario(UsuarioEliminarModel usuarioEliminar);
 

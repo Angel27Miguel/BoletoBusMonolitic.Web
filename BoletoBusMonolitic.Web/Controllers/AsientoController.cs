@@ -50,7 +50,7 @@ namespace BoletoBusMonolitic.Web.Controllers
             try
             {
                 asientoGuardar.FechaCreacion = DateTime.Now;
-                this.asientodb.AgregarAsiento(asientoGuardar);
+                this.asientodb.GuardarAsiento(asientoGuardar);
                 return RedirectToAction(nameof(Index));
 
             }

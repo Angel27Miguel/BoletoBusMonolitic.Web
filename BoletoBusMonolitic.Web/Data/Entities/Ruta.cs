@@ -8,7 +8,7 @@ namespace BoletoBusMonolitic.Web.Data.Entites
     {
         //atributos
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
 
         public int IdRuta { get; set; } 
         public string Origen { get; set; }

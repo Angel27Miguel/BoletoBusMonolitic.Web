@@ -37,12 +37,12 @@ namespace BoletoBusMonolitic.Web.Controllers
         // POST: UsuarioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsuarioAgregarModel usuarioGuardar)
+        public ActionResult Create(UsuarioGuardarModel usuarioGuardar)
         {
             try
             {
                 usuarioGuardar.FechaCreacion = DateTime.Now;
-                this.usuariodb.AgregarUsuario(usuarioGuardar);
+                this.usuariodb.GuardarUsuario(usuarioGuardar);
                 return RedirectToAction(nameof(Index));
             }
             catch

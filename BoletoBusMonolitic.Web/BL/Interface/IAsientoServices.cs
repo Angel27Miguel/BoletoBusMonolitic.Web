@@ -9,7 +9,7 @@ namespace BoletoBusMonolitic.Web.BL.Interface
             ServiceResult GetAsientoList();
             ServiceResult GetAsientoModel(int idAsiento);
 
-            ServiceResult AgregarAsiento(AsientoGuardarModel asientoAgregar);
+            ServiceResult GuardarAsiento(AsientoGuardarModel asientoAgregar);
 
             ServiceResult EliminarAsiento(AsientoEliminarModel asientoEliminar);
 

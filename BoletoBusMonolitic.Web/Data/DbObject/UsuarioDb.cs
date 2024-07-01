@@ -38,16 +38,16 @@ namespace BoletoBusMonolitic.Web.Data.DbObject
             };
         }
 
-        public void AgregarUsuario(UsuarioAgregarModel usuarioAgregar)
+        public void GuardarUsuario(UsuarioGuardarModel usuarioGuardar)
         {
             Usuario usuario = new Usuario()
             {
-                Nombres = usuarioAgregar.Nombres,
-                Apellidos = usuarioAgregar.Apellidos,
-                Correo = usuarioAgregar.Correo,
-                Clave = usuarioAgregar.Clave, // Asegúrate de encriptar la contraseña antes de guardarla
-                TipoUsuario = usuarioAgregar.TipoUsuario,
-                FechaCreacion = usuarioAgregar.FechaCreacion ?? DateTime.Now
+                Nombres = usuarioGuardar.Nombres,
+                Apellidos = usuarioGuardar.Apellidos,
+                Correo = usuarioGuardar.Correo,
+                Clave = usuarioGuardar.Clave, // Asegúrate de encriptar la contraseña antes de guardarla
+                TipoUsuario = usuarioGuardar.TipoUsuario,
+                FechaCreacion =usuarioGuardar.FechaCreacion ?? DateTime.Now
             };
 
             this.context.Usuario.Add(usuario);

@@ -7,7 +7,7 @@ namespace BoletoBusMonolitic.Web.BL.Interface
     {
         ServiceResult GetUsuarioList();
         ServiceResult GetUsuarioModel(int id);
-        ServiceResult AgregarUsuario(UsuarioAgregarModel usuarioAgregar);
+        ServiceResult GuardarUsuario(UsuarioGuardarModel usuarioAgregar);
 
         ServiceResult EliminarUsuario(UsuarioEliminarModel usuarioEliminar);
 

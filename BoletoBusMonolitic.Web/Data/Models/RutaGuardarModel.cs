@@ -8,6 +8,7 @@ namespace BoletoBusMonolitic.Web.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
+        public int IdRuta { get; set; }
         public string? Origen { get; set; } 
 
         public string? Destino { get; set; } 

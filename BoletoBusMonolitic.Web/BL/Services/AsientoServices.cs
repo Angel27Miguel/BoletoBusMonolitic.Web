@@ -13,15 +13,15 @@ namespace BoletoBusMonolitic.Web.BL.Services
         private readonly IAsiento asientoDb;
         private readonly ILogger<AsientoServices> logger;
 
-        public AsientoServices(IAsiento asientoDb, ILogger<AsientoServices> logger) 
+        public AsientoServices(IAsiento asientoDb, ILogger<AsientoServices> logger)
         {
             this.logger = logger;
             this.asientoDb = asientoDb;
-        
+
         }
-        public ServiceResult AgregarAsiento(AsientoGuardarModel asientoAgregar)
+        public ServiceResult GuardarAsiento(AsientoGuardarModel asientoGuardar)
         {
-            ServiceResult result = ValidarAsiento(asientoAgregar);
+            ServiceResult result = ValidarAsiento(asientoGuardar);
 
             if (!result.Success) 
             { 
@@ -30,7 +30,7 @@ namespace BoletoBusMonolitic.Web.BL.Services
 
             try 
             {
-                this.asientoDb.AgregarAsiento(asientoAgregar);
+                this.asientoDb.GuardarAsiento(asientoGuardar);
                 this.logger.LogInformation($"Asiento guardado exitosamente");
             
             }
@@ -61,7 +61,7 @@ namespace BoletoBusMonolitic.Web.BL.Services
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Ocurrio un error e ditando los datos";
+                result.Message = "Ocurrio un error editando los datos";
                 this.logger.LogError(ex, result.Message);
             }
             return result;

@@ -66,25 +66,7 @@ namespace BoletoBusMonolitic.Web.BL.Services
 
         public ServiceResult EliminarBus(BusEliminarModel busEliminar)
         {
-            ServiceResult result = ValidarBus(busEliminar);
-
-            if (!result.Success)
-            {
-                return result;
-            }
-
-            try
-            {
-                this.busDb.EliminarBus(busEliminar);
-                this.logger.LogInformation($"Bus eliminado exitosamente");
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-                result.Message = "Ocurrió un error eliminando los datos";
-                this.logger.LogError(ex, result.Message);
-            }
-            return result;
+            throw new NotImplementedException();
         }
 
         public ServiceResult GetBusList()
@@ -133,11 +115,11 @@ namespace BoletoBusMonolitic.Web.BL.Services
 
             if (bus is BusEditarModel editarModel)
             {
-                return ValidarCamposBus(editarModel.IdBus, editarModel.Nombre, editarModel.CapacidadTotal);
+                return ValidarCamposBus(editarModel.IdBus, editarModel.Nombre!, editarModel.CapacidadTotal);
             }
             else if (bus is BusGuardarModel guardarModel)
             {
-                return ValidarCamposBus(guardarModel.IdBus, guardarModel.Nombre, guardarModel.CapacidadTotal);
+                return ValidarCamposBus(guardarModel.IdBus, guardarModel.Nombre!, guardarModel.CapacidadTotal);
             }
             else if (bus is BusEliminarModel eliminarModel)
             {
