@@ -53,7 +53,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Edit(int id)
         {
             var menu = this.menuService.GetMenuModel(id);
-            return View();
+            return View(menu);
         }
 
         // POST: MenuController/Edit/5
@@ -66,7 +66,7 @@ namespace BoletoBusMonolitic.Web.Controllers
                 this.menuService.Actualizar(menuActualizar);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch 
             {
                 return View();
             }

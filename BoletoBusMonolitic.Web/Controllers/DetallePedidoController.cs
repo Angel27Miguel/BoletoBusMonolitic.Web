@@ -29,7 +29,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Details(int id)
         {
             var detallePedido = this.detallePedidoService.GetDetallePedidoModel(id);
-            return View();
+            return View(detallePedido);
         }
 
 
@@ -59,7 +59,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         public ActionResult Edit(int id)
         {
             var detallePedido = this.detallePedidoService.GetDetallePedidoModel(id);
-            return View();
+            return View(detallePedido);
         }
 
         // POST: DetallePedidoController/Edit/5
@@ -69,7 +69,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
-                this.detallePedidoService.Equals(detallePedidoActualizar);
+                this.detallePedidoService.Actualizar(detallePedidoActualizar);
                 return RedirectToAction(nameof(Index));
             }
             catch

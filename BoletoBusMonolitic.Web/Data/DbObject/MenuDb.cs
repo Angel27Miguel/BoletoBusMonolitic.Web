@@ -14,18 +14,18 @@ namespace BoletoBusMonolitic.Web.Data.Daos
             this.context = context;
         }
 
-        public void Actualizar(MenuActualizarModel menuUpdate)
+        public void Actualizar(MenuActualizarModel menuActualizar)
         {
-            var menu = this.context.Menu.Find(menuUpdate.IdPlato);
+            var menu = this.context.Menu.Find(menuActualizar.IdPlato);
             if (menu == null)
             {
                 throw new ArgumentException("El menú no se encuentra registrado.");
             }
 
-            menu.Categoria = menuUpdate.Categoria;
-            menu.Descripcion = menuUpdate.Descripcion;
-            menu.Nombre = menuUpdate.Nombre;
-            menu.Precio = menuUpdate.Precio;
+            menu.Categoria = menuActualizar.Categoria;
+            menu.Descripcion = menuActualizar.Descripcion;
+            menu.Nombre = menuActualizar.Nombre;
+            menu.Precio = menuActualizar.Precio;
 
             this.context.Menu.Update(menu);
             this.context.SaveChanges();

@@ -1,4 +1,5 @@
-﻿using BoletoBusMonolitic.Web.Data.Interfaces;
+﻿using BoletoBusMonolitic.Web.Data.Daos;
+using BoletoBusMonolitic.Web.Data.Interfaces;
 using BoletoBusMonolitic.Web.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                pedidoAdd.Fecha = DateTime.Now;
                 this.pedidoService.Agregar(pedidoAdd);
                 return RedirectToAction(nameof(Index));
             }
@@ -63,6 +65,7 @@ namespace BoletoBusMonolitic.Web.Controllers
         {
             try
             {
+                pedidoActualizar.Fecha = DateTime.Now;
                 this.pedidoService.Actualizar(pedidoActualizar);
                 return RedirectToAction(nameof(Index));
             }

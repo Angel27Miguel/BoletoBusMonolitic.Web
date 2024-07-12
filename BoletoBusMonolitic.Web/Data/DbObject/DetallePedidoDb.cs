@@ -82,10 +82,7 @@ namespace BoletoBusMonolitic.Web.Data.Daos
 
         public void Actualizar(DetallePedidoActualizarModel detallePedidoActualizar)
         {
-            if (detallePedidoActualizar == null)
-            {
-                throw new ArgumentNullException(nameof(detallePedidoActualizar));
-            }
+        
 
             var detallePedido = this.context.DetallePedido.Find(detallePedidoActualizar.IdDetallePedido);
             if (detallePedido == null)
